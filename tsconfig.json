@@ -6,10 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-//    "include": [
-//      "src",
-//      "src/react-app-env.d.ts"
-//    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -25,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "src/settings/react-app-env.d.ts"
   ]
 }

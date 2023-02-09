@@ -3,7 +3,9 @@
 ## Documentations
 
 Xo:  
-<https://github.com/xojs/xo>
+<https://github.com/xojs/xo>  
+<https://github.com/xojs/eslint-config-xo-react>  
+<https://github.com/xojs/eslint-config-xo-typescript>
 
 ESLint:  
 <https://eslint.org/docs/latest/user-guide/getting-started>
