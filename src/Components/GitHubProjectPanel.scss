@@ -1,0 +1,27 @@
+.Project-Panel {
+  //height: 100%;
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Project-Link {
+  border-radius: 0.4em;
+  border-style: solid;
+  border-width: 0.2em;
+  color: #A9A9A9;
+  font-size: 0.6em;
+  text-align: center;
+
+  a {
+    color: gray;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}

@@ -22,6 +22,8 @@ react-p5-wrapper: A React wrapper around the p5.js library that provides support
 d3.js: A popular data visualization library that includes support for vector operations and other mathematical operations.
 -->
 
+left click attracts, right click repels
+
 ## Documentation
 
 `PLACEHOLDER`
@@ -59,6 +61,11 @@ GitHub gh-pages:
 P5.js:  
 <https://p5js.org/>  
 <https://www.npmjs.com/package/react-p5>
+
+## Documentation
+
+The Coding Challenge (math and physics):  
+<https://www.youtube.com/watch?v=OAcXnzRNiCY>
 
 ## Contributors
 
