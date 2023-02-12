@@ -26,7 +26,6 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		const currentTime = p5.millis();
 		const deltaTime = (currentTime - previousTime) / 1000;// in seconds
 		previousTime = currentTime;
-		// console.log(deltaTime);
 
 		// Draw background
 		p5.background(0);
@@ -37,7 +36,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Update and draw particles
 		particleArray.forEach(particle => {
-			particle.update(attractor.position);
+			particle.update(attractor.position, deltaTime);
 			particle.show(p5);
 		});
 	};
