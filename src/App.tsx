@@ -10,7 +10,7 @@ const App: React.FC = () => (
 				linkText={'Im-Rises/particle-simulator-react-p5'}/>
 		</header>
 		<div className='App-body'>
-			<ParticleSimulator particleCount={1}/>
+			<ParticleSimulator particleCount={1000}/>
 		</div>
 	</div>
 );
