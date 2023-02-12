@@ -6,7 +6,7 @@ module.exports = {
 	extends: [
 		'plugin:react/recommended',
 		'xo',
-		'xo-react',
+		// 'xo-react',
 	],
 	overrides: [
 		{
@@ -35,5 +35,10 @@ module.exports = {
 		'react/prop-types': 1,
 		'no-trailing-spaces': 0,
 		'no-mixed-spaces-and-tabs': 'off',
+		// 'max-param': 'off',
+		// 'max-params': [
+		// 	'error',
+		// 	6,
+		// ],
 	},
 };

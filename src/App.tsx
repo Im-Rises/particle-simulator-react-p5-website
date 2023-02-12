@@ -1,16 +1,18 @@
 import React from 'react';
-import logo from './res/imgs/logo.svg';
 import './App.css';
+import ParticleSimulator from './Components/ParticleSimulator';
+import GitHubProjectPanel from './Components/GitHubProjectPanel';
 
-function App() {
-	return (
-		<div className='App'>
-			<header className='App-header'>
-				{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
-				<img src={logo} className='App-logo' alt='logo'/>
-			</header>
+const App: React.FC = () => (
+	<div className='App'>
+		<header>
+			<GitHubProjectPanel link={'https://github.com/Im-Rises/particle-simulator-react-p5'}
+				linkText={'Im-Rises/particle-simulator-react-p5'}/>
+		</header>
+		<div className='App-body'>
+			<ParticleSimulator particleCount={1}/>
 		</div>
-	);
-}
+	</div>
+);
 
 export default App;
