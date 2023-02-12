@@ -7,8 +7,9 @@ const G = 1000;
 class Particle {
 	position: p5Types.Vector;
 	velocity: p5Types.Vector;
-	mass = 0.1;
+	mass = 0.01;
 	color: p5Types.Color;
+	forceInversion = 1;
 
 	constructor(p5: p5Types, target: Attractor, x: number, y: number) {
 		this.position = p5.createVector(x, y);
@@ -28,7 +29,7 @@ class Particle {
 		// Sum of forces = (G * m1 * m2 / r^2 )
 		const force = toTarget.normalize().mult(G * m1m2 / distanceSquared); // multiplied by the normalized vector toTarget to get the direction of the force
 		// Acceleration = Force / mass
-		const acceleration = force.div(this.mass);
+		const acceleration = force.div(this.mass).mult(this.forceInversion);
 
 		// p = p0 + v0 * t + a * t^2 / 2
 		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2));
@@ -36,7 +37,7 @@ class Particle {
 		this.velocity.add(acceleration.mult(deltaTime));
 
 		/* Calculate new color according to distance */
-		this.color = p5.lerpColor(p5.color(0, 0, 255, 255),
+		this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
 			p5.color(0, 255, 0, 255),
 			deltaTime * this.velocity.mag());
 	}
@@ -46,6 +47,10 @@ class Particle {
 		p5.strokeWeight(4);
 		p5.point(this.position.x, this.position.y);
 	}
+
+	toggleAttractedRepulsed = () => {
+		this.forceInversion = -this.forceInversion;
+	};
 }
 
 export default Particle;

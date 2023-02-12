@@ -16,7 +16,7 @@ let attractor: Attractor;
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	let previousTime = 0;
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
-		p5.createCanvas(outerWidth, outerHeight).parent(canvasParentRef);
+		const canvas = p5.createCanvas(outerWidth, outerHeight).parent(canvasParentRef);
 		attractor = new Attractor(p5);
 		// Set the particles around the center of the screen as a square
 		for (let i = 0; i < props.particleCount; i++) {
@@ -26,6 +26,13 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 				p5.random((p5.height / 2) - squareDiameter, (p5.height / 2) + squareDiameter)),
 			);
 		}
+
+		canvas.mousePressed((p5: p5Types) => {
+			// Toggle particles to be attracted or repelled by the attractor
+			particleArray.forEach(particle => {
+				particle.toggleAttractedRepulsed();
+			});
+		});
 	};
 
 	const draw = (p5: p5Types) => {
