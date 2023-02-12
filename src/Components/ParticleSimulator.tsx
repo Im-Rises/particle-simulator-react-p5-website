@@ -4,7 +4,7 @@ import type p5Types from 'p5';
 import Attractor from '../Classes/Attractor';
 import Particle from '../Classes/Particle';
 
-const squareDiameter = 100;
+const squareDiameter = 200;
 
 type ComponentProps = {
 	particleCount: number;
