@@ -1,7 +1,8 @@
 import p5Types from 'p5';
+import type Attractor from './Attractor';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const G = 1000000000;
+const G = 1;
 
 class Particle {
 	position: p5Types.Vector;
@@ -15,20 +16,20 @@ class Particle {
 		this.color = p5.color(255, 255, 255);
 	}
 
-	update(target: p5Types.Vector, deltaTime: number) {
+	update(target: Attractor, deltaTime: number) {
 		/* Calculate new position */
-		const toTarget = p5Types.Vector.sub(target, this.position);
-		const m1m2 = 1;
-		const distanceSquared = toTarget.magSq();
+		const toTarget = p5Types.Vector.sub(target.position, this.position);
+		const m1m2 = target.mass * this.mass;
+		const distanceSquared = toTarget.dot(toTarget);
 
 		const force = toTarget.normalize().mult(G * m1m2 / distanceSquared);
 		const acceleration = force.div(this.mass);
 
-		this.position.add(this.velocity.mult(deltaTime).add(acceleration.mult(deltaTime * deltaTime).div(2)));
+		// p = p0 + v0 * t + a * t^2 / 2
+		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2));
 		this.velocity.add(acceleration.mult(deltaTime));
 
-		/* Calculate new color */
-		// this.color.setAlpha(255 * (1 - this.position.dist(target) / 1000));
+		/* Calculate new color according to distance */
 	}
 
 	show(p5: p5Types) {

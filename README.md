@@ -10,19 +10,7 @@
 
 ## Description
 
-<!--
-gl-matrix: A popular JavaScript library for high-performance matrix and vector operations that is widely used in WebGL applications.
-
-three.js: A 3D graphics library for the web that includes support for vector operations.
-
-math.js: A comprehensive mathematics library for JavaScript that includes support for vector and matrix operations.
-
-react-p5-wrapper: A React wrapper around the p5.js library that provides support for vector operations and other graphics-related functionality.
-
-d3.js: A popular data visualization library that includes support for vector operations and other mathematical operations.
--->
-
-left click attracts, right click repels
+[//]: # (left click attracts, right click repels)
 
 ## Documentation
 

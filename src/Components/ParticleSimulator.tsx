@@ -36,7 +36,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Update and draw particles
 		particleArray.forEach(particle => {
-			particle.update(attractor.position, deltaTime);
+			particle.update(attractor, deltaTime);
 			particle.show(p5);
 		});
 	};
