@@ -3,7 +3,7 @@ import type Attractor from './Attractor';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const G = 100000;
-const friction = 0.95;
+const friction = 0.99;
 
 class Particle {
 	position: p5Types.Vector;
@@ -17,7 +17,6 @@ class Particle {
 		this.position = p5.createVector(x, y);
 		this.prevPosition = p5.createVector(x, y);
 		this.velocity = p5.createVector(0, 0);
-		// this.velocity = p5.constrain(p5Types.Vector.random2D(), 0.1, 1);
 		this.color = p5.color(0, 0, 255, 255);
 	}
 
@@ -26,7 +25,7 @@ class Particle {
 		const toTarget = p5Types.Vector.sub(target.position, this.position);
 		const m1m2 = target.mass * this.mass;
 		// const distanceSquared = Math.max(toTarget.dot(toTarget), 0.001 * 0.001); // Define a minimum distance to avoid division by zero
-		const distanceSquared = p5.constrain(toTarget.magSq(), 100, 10000); // Define a minimum distance to avoid division by zero
+		const distanceSquared = p5.constrain(toTarget.magSq(), 1000, 10000); // Define a minimum distance to avoid division by zero
 		// const distanceSquared = toTarget.magSq();
 
 		// Sum of forces = (G * m1 * m2 / r^2 )
@@ -40,7 +39,7 @@ class Particle {
 		// this.velocity.add(acceleration.mult(deltaTime)); // v = v0 + a * t
 		// this.velocity.mult(friction);// Friction
 
-		// // Verlet integration
+		// Verlet integration
 		this.velocity = p5Types.Vector.sub(this.position, this.prevPosition).div(deltaTime);
 		this.prevPosition = this.position.copy();
 		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2)); // p = p + v * dt + a * dt^2 / 2

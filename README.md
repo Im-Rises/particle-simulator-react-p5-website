@@ -14,7 +14,12 @@
 
 ## Documentation
 
-`PLACEHOLDER`
+Big delta time is a problem solution:
+
+- Fixed Time Step
+- Numerical integration (Verlet Integration)
+- Interpolation
+- Clamping
 
 ## Controls
 
