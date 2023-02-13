@@ -26,8 +26,8 @@ class Particle {
 		const toTarget = p5Types.Vector.sub(target.position, this.position);
 		const m1m2 = target.mass * this.mass;
 		// const distanceSquared = Math.max(toTarget.dot(toTarget), 0.001 * 0.001); // Define a minimum distance to avoid division by zero
-		// const distanceSquared = p5.constrain(toTarget.magSq(), 100, 10000); // Define a minimum distance to avoid division by zero
-		const distanceSquared = toTarget.magSq();
+		const distanceSquared = p5.constrain(toTarget.magSq(), 100, 10000); // Define a minimum distance to avoid division by zero
+		// const distanceSquared = toTarget.magSq();
 
 		// Sum of forces = (G * m1 * m2 / r^2 )
 		const force = toTarget.normalize().mult(G * m1m2 / distanceSquared); // multiplied by the normalized vector toTarget to get the direction of the force
@@ -35,15 +35,15 @@ class Particle {
 		const acceleration = force.div(this.mass).mult(this.forceInversion);
 
 		/* Integration */
-		// // Verlet integration
-		// const temp = this.position.copy();
-		// this.position.add(this.position.sub(this.prevPosition).mult(1 - friction)).add(acceleration.mult(deltaTime * deltaTime));
-		// this.prevPosition = temp;
-
 		// Euler integration
 		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2)); // p = p + v * dt + a * dt^2 / 2
 		this.velocity.add(acceleration.mult(deltaTime)); // v = v0 + a * t
 		this.velocity.mult(friction);// Friction
+
+		// // Verlet integration
+		// const temp = this.position.copy();
+		// this.position.add(this.position.sub(this.prevPosition).mult(1 - friction)).add(acceleration.mult(deltaTime * deltaTime));
+		// this.prevPosition = temp;
 
 		/* Calculate new color according to velocity */
 		this.color = p5.lerpColor(p5.color(0, 255, 255, 255),

@@ -16,6 +16,25 @@
 
 `PLACEHOLDER`
 
+## Controls
+
+The following controls are available:
+
+- Mouse click: Attract/repel particles
+- Tactile click: Attract/repel particles
+
+### Mouse
+
+Use the mouse to interact with the particles. Initially, the particles will be attracted to the mouse.
+To change the behavior of the particles to repel, press the left mouse button.
+You can toggle from attract to repel and vice versa by pressing the left mouse button.
+
+### Tactile
+
+Use the tactile screen to interact with the particles. Initially, the particles will be attracted to the tactile screen.
+To change the behavior of the particles to repel, press the tactile screen.
+You can toggle from attract to repel and vice versa by pressing the tactile screen.
+
 ## GitHub Actions
 
 [![pages-build-deployment](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment)

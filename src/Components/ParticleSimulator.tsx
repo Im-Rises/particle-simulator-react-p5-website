@@ -4,7 +4,8 @@ import type p5Types from 'p5';
 import Attractor from '../Classes/Attractor';
 import Particle from '../Classes/Particle';
 
-const squareDiameter = 200;
+const canvasSizeCoefficient = 4 / 5;
+const particlesPosSizeCoeff = 1 / 4;
 
 type ComponentProps = {
 	particleCount: number;
@@ -16,14 +17,14 @@ let attractor: Attractor;
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	let previousTime = 0;
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
-		const canvas = p5.createCanvas(outerWidth * 4 / 5, outerHeight * 4 / 5).parent(canvasParentRef);
+		const canvas = p5.createCanvas(outerWidth * canvasSizeCoefficient, outerHeight * canvasSizeCoefficient).parent(canvasParentRef);
 		attractor = new Attractor(p5);
 		// Set the particles around the center of the screen as a square
 		for (let i = 0; i < props.particleCount; i++) {
 			particleArray.push(new Particle(p5,
 				attractor,
-				p5.random((p5.width / 2) - squareDiameter, (p5.width / 2) + squareDiameter),
-				p5.random((p5.height / 2) - squareDiameter, (p5.height / 2) + squareDiameter)),
+				p5.random((p5.width / 2) - (p5.width * particlesPosSizeCoeff), (p5.width / 2) + (p5.width * particlesPosSizeCoeff)),
+				p5.random((p5.height / 2) - (p5.height * particlesPosSizeCoeff), (p5.height / 2) + (p5.height * particlesPosSizeCoeff))),
 			);
 		}
 
@@ -50,7 +51,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Update and draw particles
 		particleArray.forEach(particle => {
-			particle.update(p5, attractor, deltaTime);
+			particle.update(p5, attractor, Math.min(deltaTime, 0.16));
 			particle.show(p5);
 		});
 	};
