@@ -33,14 +33,14 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			);
 		}
 
-		console.log(particleArray.length);
-
 		canvas.mousePressed((p5: p5Types) => {
 			// Toggle particles to be attracted or repelled by the attractor
 			particleArray.forEach(particle => {
 				particle.toggleAttractedRepulsed();
 			});
 		});
+
+		console.log(particleArray.length);
 	};
 
 	const draw = (p5: p5Types) => {
