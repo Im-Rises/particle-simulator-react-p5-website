@@ -19,7 +19,7 @@ This is a particle simulator made with React Typescript and p5.js. It is a work 
 - [x] Add particle attraction
 - [x] Add particle repulsion
 - [ ] Add beautiful effects
-- [ ] Add Workers for better performance
+- [ ] Add Workers for better performance (parallelism)
 
 ## Images and videos
 

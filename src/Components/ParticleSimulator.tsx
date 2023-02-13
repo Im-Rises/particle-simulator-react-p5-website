@@ -18,7 +18,9 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	// Attractor and Particles array
 	const particleArray: Particle[] = [];
 	let attractor: Attractor;
+	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
+		// Create canvas
 		const canvas = p5.createCanvas(outerWidth * props.canvasSizeCoefficient,
 			outerHeight * props.canvasSizeCoefficient).parent(canvasParentRef);
 		attractor = new Attractor(p5);
@@ -33,6 +35,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			);
 		}
 
+		// Callback mouse button
 		canvas.mousePressed((p5: p5Types) => {
 			// Toggle particles to be attracted or repelled by the attractor
 			particleArray.forEach(particle => {
@@ -40,9 +43,11 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			});
 		});
 
-		console.log(particleArray.length);
+		// Set frame rate to 60
+		p5.frameRate(60);
 	};
 
+	// Sketch draw call every frame (60 fps) game loop
 	const draw = (p5: p5Types) => {
 		/* Calculate deltaTime and update fixedUpdateAccum */
 		const currentTime = p5.millis();

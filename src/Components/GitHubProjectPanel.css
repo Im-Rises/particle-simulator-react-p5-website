@@ -2,21 +2,20 @@
   position: absolute;
   top: 0;
   right: 0;
-}
-
-.Project-Link {
-  border-radius: 0.4em;
   border-style: solid;
+  border-radius: 0.4em;
   border-width: 0.2em;
-  color: #A9A9A9;
-  font-size: 0.6em;
+  padding: 0.2em;
   text-align: center;
+  color: #A9A9A9;
 }
-.Project-Link a {
-  color: gray;
+.Project-Panel .header {
+  color: #A9A9A9;
+  font-size: 0.8em;
 }
-.Project-Link:hover {
-  color: #fff;
+.Project-Panel .project-link {
+  color: #49a8dd;
+  font-size: 0.5em;
 }
 
 /*# sourceMappingURL=GitHubProjectPanel.css.map */
