@@ -10,7 +10,19 @@
 
 ## Description
 
-[//]: # (left click attracts, right click repels)
+This is a particle simulator made with React Typescript and p5.js. It is a work in progress.
+
+## Todo list
+
+- [x] Add particles
+- [x] Add particle movement
+- [x] Add particle attraction
+- [x] Add particle repulsion
+- [ ] Add beautiful effects
+
+## Images and videos
+
+`PLACEHOLDER`
 
 ## Documentation
 
