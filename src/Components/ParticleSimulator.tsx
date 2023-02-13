@@ -11,12 +11,13 @@ type ComponentProps = {
 	particlesPosSizeCoeff: number;
 };
 
-const particleArray: Particle[] = [];
-let attractor: Attractor;
-
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
+	// Time variables
 	let previousTime = 0;
 	let fixedUpdateAccum = 0;
+	// Attractor and Particles array
+	const particleArray: Particle[] = [];
+	let attractor: Attractor;
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		const canvas = p5.createCanvas(outerWidth * props.canvasSizeCoefficient,
 			outerHeight * props.canvasSizeCoefficient).parent(canvasParentRef);
@@ -31,6 +32,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 					(p5.height / 2) + (p5.height * props.particlesPosSizeCoeff))),
 			);
 		}
+
+		console.log(particleArray.length);
 
 		canvas.mousePressed((p5: p5Types) => {
 			// Toggle particles to be attracted or repelled by the attractor

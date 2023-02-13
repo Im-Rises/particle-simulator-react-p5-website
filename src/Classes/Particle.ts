@@ -34,17 +34,9 @@ class Particle {
 		const acceleration = force.div(this.mass).mult(this.forceInversion);
 
 		/* Integration */
-		// Euler integration
 		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2)); // p = p + v * dt + a * dt^2 / 2
 		this.velocity.add(acceleration.mult(deltaTime)); // v = v0 + a * t
 		this.velocity.mult(friction);// Friction
-
-		// // Verlet integration
-		// this.velocity = p5Types.Vector.sub(this.position, this.prevPosition).div(deltaTime);
-		// this.prevPosition = this.position.copy();
-		// this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2)); // p = p + v * dt + a * dt^2 / 2
-		// this.velocity.add(acceleration.mult(deltaTime)); // v = v0 + a * t
-		// this.velocity.mult(friction);// Friction
 
 		/* Calculate new color according to velocity */
 		this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
