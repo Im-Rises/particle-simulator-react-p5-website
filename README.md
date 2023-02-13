@@ -10,11 +10,47 @@
 
 ## Description
 
-[//]: # (left click attracts, right click repels)
+This is a particle simulator made with React Typescript and p5.js. It is a work in progress.
+
+## Todo list
+
+- [x] Add particles
+- [x] Add particle movement
+- [x] Add particle attraction
+- [x] Add particle repulsion
+- [ ] Add beautiful effects
+
+## Images and videos
+
+`PLACEHOLDER`
 
 ## Documentation
 
-`PLACEHOLDER`
+Big delta time is a problem solution:
+
+- Fixed Time Step
+- Numerical integration (Verlet Integration)
+- Interpolation
+- Clamping
+
+## Controls
+
+The following controls are available:
+
+- Mouse click: Attract/repel particles
+- Tactile click: Attract/repel particles
+
+### Mouse
+
+Use the mouse to interact with the particles. Initially, the particles will be attracted to the mouse.
+To change the behavior of the particles to repel, press the left mouse button.
+You can toggle from attract to repel and vice versa by pressing the left mouse button.
+
+### Tactile
+
+Use the tactile screen to interact with the particles. Initially, the particles will be attracted to the tactile screen.
+To change the behavior of the particles to repel, press the tactile screen.
+You can toggle from attract to repel and vice versa by pressing the tactile screen.
 
 ## GitHub Actions
 
