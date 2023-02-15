@@ -2,25 +2,29 @@ import React from 'react';
 import Sketch from 'react-p5';
 import type p5Types from 'p5';
 import Attractor from '../Classes/Attractor';
-import Particle from '../Classes/Particle';
+import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
 	particleCount: number;
+	frameRate: number;
 	fixedDeltaTime: number;
-	canvasSizeCoefficient: number;
 	particlesPosSizeCoeff: number;
 };
 
-const particleArray: Particle[] = [];
-let attractor: Attractor;
-
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
+	// Time variables
 	let previousTime = 0;
 	let fixedUpdateAccum = 0;
+	// Attractor and Particles array
+	const particleArray: Particle[] = [];
+	let attractor: Attractor;
+
+	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
-		const canvas = p5.createCanvas(outerWidth * props.canvasSizeCoefficient,
-			outerHeight * props.canvasSizeCoefficient).parent(canvasParentRef);
+		// Create canvas
+		const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.P2D).parent(canvasParentRef);
 		attractor = new Attractor(p5);
+
 		// Set the particles around the center of the screen as a square
 		for (let i = 0; i < props.particleCount; i++) {
 			particleArray.push(new Particle(p5,
@@ -32,14 +36,27 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			);
 		}
 
+		// Callback mouse button
 		canvas.mousePressed((p5: p5Types) => {
-			// Toggle particles to be attracted or repelled by the attractor
-			particleArray.forEach(particle => {
-				particle.toggleAttractedRepulsed();
-			});
+			toggleAttractedRepulsed();
 		});
+
+		// // Callback window fullscreen
+		// canvas.doubleClicked((p5: p5Types) => {
+		// 	const fs = p5.fullscreen();
+		// 	p5.fullscreen(!fs);
+		// });
+
+		// // Callback
+		// canvas.touchStarted((p5: p5Types) => {
+		//
+		// });
+
+		// Set frame rate to 60
+		p5.frameRate(props.frameRate);
 	};
 
+	// Sketch draw call every frame (60 fps) game loop
 	const draw = (p5: p5Types) => {
 		/* Calculate deltaTime and update fixedUpdateAccum */
 		const currentTime = p5.millis();
@@ -49,6 +66,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		/* Read inputs */
 		// At the moment it is directly in the attractor.update() function
+		// Set attractor position to mouse position if mouse is pressed
 
 		/* Update physics (fixed update) */
 		if (fixedUpdateAccum >= props.fixedDeltaTime) {
@@ -61,7 +79,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			fixedUpdateAccum = 0;
 		}
 
-		/* Update video */
+		/* Update canvas */
 		p5.background(0);
 		attractor.show(p5);
 		particleArray.forEach(particle => {
@@ -69,7 +87,11 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		});
 	};
 
-	return <Sketch setup={setup} draw={draw}/>;
+	const windowResized = (p5: p5Types) => {
+		p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+	};
+
+	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;
 };
 
 export default ParticleSimulator;

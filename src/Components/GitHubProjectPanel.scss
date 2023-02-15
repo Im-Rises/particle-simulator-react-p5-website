@@ -1,27 +1,22 @@
 .Project-Panel {
-  //height: 100%;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-
   position: absolute;
-  top: 0;
-  right: 0;
-}
+  top: 0.5rem;
+  left: 0.5rem;
 
-.Project-Link {
-  border-radius: 0.4em;
   border-style: solid;
-  border-width: 0.2em;
-  color: #A9A9A9;
-  font-size: 0.6em;
+  border-radius: 0.4rem;
+  border-width: 0.2rem;
+  padding: 0.2rem;
   text-align: center;
+  color: #A9A9A9;
 
-  a {
-    color: gray;
+  .header {
+    color: #A9A9A9;
+    font-size: 0.8em;
   }
 
-  &:hover {
-    color: #fff;
+  .project-link {
+    color: #49a8dd;
+    font-size: 0.5em;
   }
 }
