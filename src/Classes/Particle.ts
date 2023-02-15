@@ -2,8 +2,10 @@ import p5Types from 'p5';
 import type Attractor from './Attractor';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const G = 1;
-const friction = 0.95;
+const G = 1000;
+const friction = 0.99;
+const drag = 0.5;
+const distanceCenterOffset = 1000;
 
 // Can be member of Particle class
 const mass = 1;
@@ -24,9 +26,8 @@ class Particle {
 		/* Calculate acceleration */
 		const toTarget = p5Types.Vector.sub(target.position, this.position);
 		const m1m2 = target.mass * mass;
-		const distanceSquared = toTarget.magSq();
-		// const distanceSquared = Math.max(toTarget.dot(toTarget), 0.001 * 0.001);
-		// const distanceSquared = p5.constrain(toTarget.magSq(), 1000, 10000);
+		// const distanceSquared = toTarget.magSq();
+		const distanceSquared = toTarget.magSq() + distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
 		const force = toTarget.copy().normalize().mult(G * m1m2 / distanceSquared);

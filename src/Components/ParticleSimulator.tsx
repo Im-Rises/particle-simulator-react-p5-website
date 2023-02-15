@@ -66,6 +66,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		/* Read inputs */
 		// At the moment it is directly in the attractor.update() function
+		// Set attractor position to mouse position if mouse is pressed
 
 		/* Update physics (fixed update) */
 		if (fixedUpdateAccum >= props.fixedDeltaTime) {
