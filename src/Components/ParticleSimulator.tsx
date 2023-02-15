@@ -6,8 +6,8 @@ import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
 	particleCount: number;
+	frameRate: number;
 	fixedDeltaTime: number;
-	canvasSizeCoefficient: number;
 	particlesPosSizeCoeff: number;
 };
 
@@ -18,12 +18,13 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	// Attractor and Particles array
 	const particleArray: Particle[] = [];
 	let attractor: Attractor;
+
 	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		// Create canvas
-		const canvas = p5.createCanvas(outerWidth * props.canvasSizeCoefficient,
-			outerHeight * props.canvasSizeCoefficient).parent(canvasParentRef);
+		const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.P2D).parent(canvasParentRef);
 		attractor = new Attractor(p5);
+
 		// Set the particles around the center of the screen as a square
 		for (let i = 0; i < props.particleCount; i++) {
 			particleArray.push(new Particle(p5,
@@ -40,8 +41,19 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			toggleAttractedRepulsed();
 		});
 
+		// // Callback window fullscreen
+		// canvas.doubleClicked((p5: p5Types) => {
+		// 	const fs = p5.fullscreen();
+		// 	p5.fullscreen(!fs);
+		// });
+
+		// // Callback
+		// canvas.touchStarted((p5: p5Types) => {
+		//
+		// });
+
 		// Set frame rate to 60
-		p5.frameRate(60);
+		p5.frameRate(props.frameRate);
 	};
 
 	// Sketch draw call every frame (60 fps) game loop
@@ -74,7 +86,11 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		});
 	};
 
-	return <Sketch setup={setup} draw={draw}/>;
+	const windowResized = (p5: p5Types) => {
+		p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+	};
+
+	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;
 };
 
 export default ParticleSimulator;

@@ -1,11 +1,11 @@
 .Project-Panel {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0.5rem;
+  left: 0.5rem;
   border-style: solid;
-  border-radius: 0.4em;
-  border-width: 0.2em;
-  padding: 0.2em;
+  border-radius: 0.4rem;
+  border-width: 0.2rem;
+  padding: 0.2rem;
   text-align: center;
   color: #A9A9A9;
 }

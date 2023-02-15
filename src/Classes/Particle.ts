@@ -3,7 +3,7 @@ import type Attractor from './Attractor';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const G = 1;
-const friction = 0.99;
+const friction = 0.95;
 
 // Can be member of Particle class
 const mass = 1;
