@@ -2,7 +2,7 @@ import type p5Types from 'p5';
 
 class Attractor {
 	position: p5Types.Vector;
-	mass = 176;
+	mass = 1;
 
 	constructor(p5: p5Types) {
 		p5.mouseX = p5.width / 2;

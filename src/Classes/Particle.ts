@@ -38,12 +38,12 @@ class Particle {
 		this.position.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
 		this.velocity.add(acceleration.copy().mult(deltaTime));
-		// this.velocity.mult(friction);
+		this.velocity.mult(friction);
 
 		/* Calculate new color according to velocity */
-		this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
-			p5.color(0, 255, 0, 255),
-			this.velocity.mag() / 10);
+		// this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
+		// 	p5.color(0, 255, 0, 255),
+		// 	this.velocity.mag());
 	}
 
 	show(p5: p5Types) {
