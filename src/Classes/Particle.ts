@@ -13,7 +13,8 @@ class Particle {
 	color: p5Types.Color;
 
 	constructor(p5: p5Types, target: Attractor, x: number, y: number) {
-		this.position = p5.createVector(x, y);
+		// this.position = p5.createVector(x, y);
+		this.position = p5.createVector(0, 0);
 		this.velocity = p5.createVector(0, 0);
 		this.color = p5.color(0, 255, 255, 255);
 	}
@@ -27,23 +28,22 @@ class Particle {
 		// const distanceSquared = p5.constrain(toTarget.magSq(), 1000, 10000);
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
-		const force = toTarget.normalize().mult(G * m1m2 / distanceSquared);
+		// const force = toTarget.copy().normalize().mult(G * m1m2 / distanceSquared);
+		const force = p5.createVector(0, 9.81);
 		// Acceleration = Force / mass
-		const acceleration = force.div(mass).mult(forceInversion);
+		const acceleration = force.copy().div(mass).mult(forceInversion);
 
 		/* Integration */
-		// p = p + v * dt + a * dt^2 / 2
-		this.position.add(this.velocity.mult(deltaTime)).add(acceleration.mult(deltaTime * deltaTime).div(2));
+		// p = p0 + v0 * t + 1/2 * a * t^2
+		this.position.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
-		this.velocity.add(acceleration.mult(deltaTime));
-		// this.velocity.mult(friction); // Friction
+		this.velocity.add(acceleration.copy().mult(deltaTime));
+		// this.velocity.mult(friction);
 
 		/* Calculate new color according to velocity */
 		// this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
 		// 	p5.color(0, 255, 0, 255),
 		// 	this.velocity.mag() / 10);
-
-		console.log(this.position);
 	}
 
 	show(p5: p5Types) {
