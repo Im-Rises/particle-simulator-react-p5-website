@@ -2,7 +2,7 @@ import React from 'react';
 import Sketch from 'react-p5';
 import type p5Types from 'p5';
 import Attractor from '../Classes/Attractor';
-import Particle from '../Classes/Particle';
+import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
 	particleCount: number;
@@ -37,10 +37,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Callback mouse button
 		canvas.mousePressed((p5: p5Types) => {
-			// Toggle particles to be attracted or repelled by the attractor
-			particleArray.forEach(particle => {
-				particle.toggleAttractedRepulsed();
-			});
+			toggleAttractedRepulsed();
 		});
 
 		// Set frame rate to 60
@@ -69,7 +66,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			fixedUpdateAccum = 0;
 		}
 
-		/* Update video */
+		/* Update canvas */
 		p5.background(0);
 		attractor.show(p5);
 		particleArray.forEach(particle => {
