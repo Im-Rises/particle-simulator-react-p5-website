@@ -20,7 +20,7 @@ This is a particle simulator made with React Typescript and p5.js. It is a work 
 - [x] Add particle repulsion
 - [x] Add adaptation to screen size
 - [x] Adapt size of text to screen size
-- [ ] Add beautiful effects
+- [x] Add beautiful effects
 - [ ] Add Workers for better performance (parallelism)
 
 ## Images and videos

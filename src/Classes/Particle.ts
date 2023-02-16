@@ -42,9 +42,9 @@ class Particle {
 		this.velocity.mult(friction);
 
 		/* Calculate new color according to velocity */
-		// this.color = p5.lerpColor(p5.color(0, 255, 255, 255),
-		// 	p5.color(0, 255, 0, 255),
-		// 	this.velocity.mag());
+		const velocityMagnitude = this.velocity.mag();
+		const velocityMagnitudeNormalized = velocityMagnitude / 100;
+		this.color = p5.color(velocityMagnitudeNormalized * 255, 255 - (velocityMagnitudeNormalized * 255), 255, 255);
 	}
 
 	show(p5: p5Types) {
