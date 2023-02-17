@@ -30,8 +30,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		for (let i = 0; i < props.particleCount; i++) {
 			particleArray.push(new Particle(p5,
 				attractor,
-				p5.random(-props.spawnAreaWidth / 2, props.spawnAreaWidth / 2) + p5.width / 2,
-				p5.random(-props.spawnAreaHeight / 2, props.spawnAreaHeight / 2) + p5.height / 2),
+				p5.random(-props.spawnAreaWidth / 2, props.spawnAreaWidth / 2) + (p5.width / 2),
+				p5.random(-props.spawnAreaHeight / 2, props.spawnAreaHeight / 2) + (p5.height / 2)),
 			);
 		}
 
