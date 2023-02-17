@@ -10,50 +10,22 @@
 
 ## Description
 
-This is a particle simulator made with React Typescript and p5.js. It is a work in progress.
+This is a particle simulator made with React Typescript and p5.js.
 
-## Todo list
+You can try it online from your browser [here](https://im-rises.github.io/particle-simulator-react-p5/).
 
-- [x] Add particles
-- [x] Add particle movement
-- [x] Add particle attraction
-- [x] Add particle repulsion
-- [x] Add adaptation to screen size
-- [x] Adapt size of text to screen size
-- [ ] Add beautiful effects
-- [ ] Add Workers for better performance (parallelism)
+It works on desktop and mobile as well with different controls (check the `controls` section).
 
 ## Images and videos
 
 `PLACEHOLDER`
 
-## Documentation
-
-Big delta time is a problem solution:
-
-- Fixed Time Step
-- Numerical integration (Verlet Integration)
-- Interpolation
-- Clamping
-
 ## Controls
 
-The following controls are available:
-
-- Mouse click: Attract/repel particles
-- Tactile click: Attract/repel particles
-
-### Mouse
-
-Use the mouse to interact with the particles. Initially, the particles will be attracted to the mouse.
-To change the behavior of the particles to repel, press the left mouse button.
-You can toggle from attract to repel and vice versa by pressing the left mouse button.
-
-### Tactile
-
-Use the tactile screen to interact with the particles. Initially, the particles will be attracted to the tactile screen.
-To change the behavior of the particles to repel, press the tactile screen.
-You can toggle from attract to repel and vice versa by pressing the tactile screen.
+The particles are initially attracted to the mouse, but you can toggle attract/repel by clicking with the mouse
+button on a screen.  
+On tablet and mobile de the touch screen to move the particles by dragging your finger. To toggle
+attract/repel tap on the screen.
 
 ## GitHub Actions
 
@@ -93,6 +65,12 @@ P5.js:
 
 The Coding Challenge (math and physics):  
 <https://www.youtube.com/watch?v=OAcXnzRNiCY>
+
+P5.js:  
+<https://p5js.org/>
+
+P5.js React:  
+<https://www.npmjs.com/package/react-p5>
 
 ## Contributors
 
