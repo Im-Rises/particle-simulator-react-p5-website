@@ -6,6 +6,7 @@ const G = 1000;
 const friction = 0.99;
 const drag = 0.5;
 const distanceCenterOffset = 1000;
+const colorNormalizer = 100;
 
 // Can be member of Particle class
 const mass = 1;
@@ -43,7 +44,7 @@ class Particle {
 
 		/* Calculate new color according to velocity */
 		const velocityMagnitude = this.velocity.mag();
-		const velocityMagnitudeNormalized = velocityMagnitude / 100;
+		const velocityMagnitudeNormalized = velocityMagnitude / colorNormalizer;
 		this.color = p5.color(velocityMagnitudeNormalized * 255, 255 - (velocityMagnitudeNormalized * 255), 255, 255);
 	}
 

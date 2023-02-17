@@ -9,9 +9,9 @@ const App: React.FC = () => (
 			<GitHubProjectPanel link={'https://github.com/Im-Rises/particle-simulator-react-p5'}
 				linkText={'Im-Rises/particle-simulator-react-p5'}/>
 		</header>
-		<div>
-			<ParticleSimulator particleCount={1000} fixedDeltaTime={1 / 50} frameRate={60}
-				particlesPosSizeCoeff={1 / 4}/>
+		<div className={'particle-sim-canvas'}>
+			<ParticleSimulator particleCount={5000} fixedDeltaTime={1 / 50} frameRate={60}
+				spawnAreaWidth={100} spawnAreaHeight={100}/>
 		</div>
 	</div>
 );
