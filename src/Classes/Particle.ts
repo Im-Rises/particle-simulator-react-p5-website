@@ -42,6 +42,23 @@ class Particle {
 		this.velocity.add(acceleration.copy().mult(deltaTime));
 		this.velocity.mult(friction);
 
+		/* Prevent particles from going out of the screen */
+		if (this.position.x < 0) {
+			this.position.x = p5.width;
+		}
+
+		if (this.position.x > p5.width) {
+			this.position.x = 0;
+		}
+
+		if (this.position.y < 0) {
+			this.position.y = p5.height;
+		}
+
+		if (this.position.y > p5.height) {
+			this.position.y = 0;
+		}
+
 		/* Calculate new color according to velocity */
 		const velocityMagnitude = this.velocity.mag();
 		const velocityMagnitudeNormalized = velocityMagnitude / colorNormalizer;
