@@ -19,14 +19,23 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	// Attractor and Particles array
 	const particleArray: Particle[] = [];
 	let attractor: Attractor;
+	// P5 variables
+	let screenBuffer: p5Types.Graphics;
 
 	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		// Create canvas
 		const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.P2D).parent(canvasParentRef);
+		// Create graphics
+		screenBuffer = p5.createGraphics(p5.windowWidth, p5.windowHeight, p5.P2D);
+
+		// Set frame rate to 60
+		p5.frameRate(props.frameRate);
+
+		// Create attractor
 		attractor = new Attractor(p5);
 
-		// Set the particles around the center of the screen as a square
+		// Create and set the particles around the center of the screen as a square
 		for (let i = 0; i < props.particleCount; i++) {
 			particleArray.push(new Particle(p5,
 				attractor,
@@ -35,15 +44,10 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			);
 		}
 
-		console.log((p5.width + props.spawnAreaWidth) / 2);
-
 		// Callback mouse button
 		canvas.mousePressed((p5: p5Types) => {
 			toggleAttractedRepulsed();
 		});
-
-		// Set frame rate to 60
-		p5.frameRate(props.frameRate);
 	};
 
 	// Sketch draw call every frame (60 fps) game loop
@@ -70,15 +74,21 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		}
 
 		/* Update canvas */
-		p5.background(0);
-		attractor.show(p5);
+		// Clear canvas
+		screenBuffer.background(0);
+		// Draw objects
+		attractor.show(screenBuffer);
 		particleArray.forEach(particle => {
-			particle.show(p5);
+			particle.show(screenBuffer);
 		});
+		// Swap buffers
+		p5.image(screenBuffer, 0, 0);
 	};
 
+	// Sketch window resize
 	const windowResized = (p5: p5Types) => {
 		p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+		screenBuffer.resizeCanvas(p5.windowWidth, p5.windowHeight);
 	};
 
 	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;

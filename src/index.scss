@@ -6,4 +6,7 @@ html, body {
   overflow: hidden;
   font-size: 16px;
   background-color: black;
+
+  -webkit-user-select: none;
+  cursor: none;
 }

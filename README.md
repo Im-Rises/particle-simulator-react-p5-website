@@ -16,9 +16,12 @@ You can try it online from your browser [here](https://im-rises.github.io/partic
 
 It works on desktop and mobile as well with different controls (check the `controls` section).
 
-## Images and videos
+The particles are set randomly on the screen in a square shape. Their color change according to their speed from blue to
+purple and then to pink.
 
-`PLACEHOLDER`
+## Demo video
+
+https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
 
 ## Controls
 
