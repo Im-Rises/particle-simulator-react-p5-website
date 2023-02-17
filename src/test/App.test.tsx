@@ -1,6 +1,5 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import '@testing-library/jest-dom';
 import {GITHUB_LINK_TEXT} from '../Constants/constant-particle-simulator';
 import App from '../App';
 
