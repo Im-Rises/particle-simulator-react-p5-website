@@ -64,6 +64,9 @@ P5.js:
 <https://p5js.org/>  
 <https://www.npmjs.com/package/react-p5>
 
+react-device-detect:  
+<https://www.npmjs.com/package/react-device-detect>
+
 ## Documentation
 
 The Coding Challenge (math and physics):  

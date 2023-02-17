@@ -5,8 +5,6 @@ class Attractor {
 	mass = 1000;
 
 	constructor(p5: p5Types) {
-		// p5.mouseX = p5.width / 2;
-		// p5.mouseY = p5.height / 2;
 		this.position = p5.createVector(p5.mouseX, p5.mouseY);
 	}
 
