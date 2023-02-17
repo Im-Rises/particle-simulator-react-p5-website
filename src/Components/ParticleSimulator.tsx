@@ -59,8 +59,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		fixedUpdateAccum += deltaTime;
 
 		/* Read inputs */
-		// At the moment it is directly in the attractor.update() function
-		// Set attractor position to mouse position if mouse is pressed
+		// At the moment it is directly in the attractor.update() function for the mouse position
+		// And the toggleAttractedRepulsed() function is called in the mousePressed() callback
 
 		/* Update physics (fixed update) */
 		if (fixedUpdateAccum >= props.fixedDeltaTime) {
