@@ -1,14 +1,8 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
+import {GITHUB_LINK_TEXT} from '../Constants/constant-particle-simulator';
 import App from '../App';
-import {
-	GITHUB_LINK_TEXT,
-	PARTICLES_COUNT_COMPUTER,
-	PARTICLES_COUNT_MOBILE,
-} from '../Constants/constant-particle-simulator';
-import ParticleSimulator from '../Components/ParticleSimulator';
-import {isMobile} from 'react-device-detect';
 
 test('Render GitHub Project Panel', () => {
 	render(<App/>);
