@@ -49,6 +49,14 @@ To use it you can simply add the component in your project like this:
                    spawnAreaWidth={100} spawnAreaHeight={100}/>
 ```
 
+The component takes 6 props:
+
+- `particleCount`: the number of particles to spawn
+- `fixedDeltaTime`: the fixed delta time to use for the physics simulation (in seconds)
+- `frameRate`: the frame rate to use for the physics simulation (in frames per second)
+- `spawnAreaWidth`: the width of the spawn area
+- `spawnAreaHeight`: the height of the spawn area
+
 This will create a canvas with 3000 particles on desktop and 1000 on mobile.
 
 > **Note**  
