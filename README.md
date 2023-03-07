@@ -20,9 +20,36 @@ It works on desktop and mobile as well with different controls (check the `contr
 The particles are set randomly on the screen in a square shape. Their color change according to their speed from blue to
 purple and then to pink.
 
+The package is available on npm [here](https://www.npmjs.com/package/particle-simulator-react-p5).
+
+## Screenshots
+
+![screenshot1](https://user-images.githubusercontent.com/59691442/223539432-98ed98bd-2aed-47f6-9463-740bf3a77640.png)
+![screenshot2](https://user-images.githubusercontent.com/59691442/223539428-e51d349e-aaee-4012-9d8b-7c21806af833.png)
+![screenshot3](https://user-images.githubusercontent.com/59691442/223539427-0c7616ed-8d45-4aa5-a060-f49c54c97885.png)
+
 ## Demo video
 
 https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
+
+## Package installation
+
+To install it type `npm install particle-simulator-react-p5` in your terminal to install it.
+
+Then you can import it in your project with `import ParticleSimulator from 'particle-simulator-react-p5'`.
+
+## Usage
+
+To use it you can simply add the component in your project like this:
+
+```jsx
+<ParticleSimulator particleCount={isMobile ? 1000 : 3000}
+                   fixedDeltaTime={1 / 50}
+                   frameRate={60}
+                   spawnAreaWidth={100} spawnAreaHeight={100}/>
+```
+
+This will create a canvas with 3000 particles on desktop and 1000 on mobile.
 
 ## Controls
 
