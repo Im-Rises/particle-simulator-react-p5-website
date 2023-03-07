@@ -11,16 +11,16 @@
 
 ## Description
 
-This is a particle simulator made with React Typescript and p5.js.
+This is a particle simulator package made with React Typescript and p5.js.
 
-You can try it online from your browser [here](https://im-rises.github.io/particle-simulator-react-p5/).
+## 🚀🚀[You can try it online from your browser](https://im-rises.github.io/particle-simulator-react-p5/) 🚀🚀
 
 It works on desktop and mobile as well with different controls (check the `controls` section).
 
 The particles are set randomly on the screen in a square shape. Their color change according to their speed from blue to
 purple and then to pink.
 
-The package is available on npm [here](https://www.npmjs.com/package/particle-simulator-react-p5).
+## 🚀🚀 [The package is available on npm](https://www.npmjs.com/package/particle-simulator-react-p5) 🚀🚀
 
 ## Screenshots
 
@@ -50,6 +50,14 @@ To use it you can simply add the component in your project like this:
 ```
 
 This will create a canvas with 3000 particles on desktop and 1000 on mobile.
+
+> **Note**  
+> The number of particles can be limited by the browser. That's why you should not set a too high number of particles.
+> To check if your app is running under a mobile device you can use the `isMobile` variable from
+> the `react-device-detect` and set the number of particles accordingly.
+
+You can find an example of the project in the github
+repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
 
 ## Controls
 
