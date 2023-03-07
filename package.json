@@ -1,8 +1,14 @@
 {
   "name": "particle-simulator-react-p5",
   "homepage": "https://im-rises.github.io/particle-simulator-react-p5/",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "private": false,
+  "files": [
+    "README.md",
+    "LICENSE",
+    "src/Components/ParticleSimulator.tsx",
+    "src/Components/ParticleSimulator.css"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
