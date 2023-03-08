@@ -122,6 +122,14 @@ P5.js:
 P5.js React:  
 <https://www.npmjs.com/package/react-p5>
 
+## Links
+
+Check the source code
+on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://github.com/im-rises/particle-simulator-react-p5)
+
+Check the package
+on [![npm](https://user-images.githubusercontent.com/59691442/223556055-4e9ef014-79d4-4136-ac07-b837b49066c8.svg)](https://www.npmjs.com/package/particle-simulator-react-p5)
+
 ## Contributors
 
 Quentin MOREL :

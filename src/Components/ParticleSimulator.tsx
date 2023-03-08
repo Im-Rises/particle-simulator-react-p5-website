@@ -1,6 +1,7 @@
 import React from 'react';
 import Sketch from 'react-p5';
-import type p5Types from 'p5';
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+import p5Types from 'p5';
 import Attractor from '../Classes/Attractor';
 import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
