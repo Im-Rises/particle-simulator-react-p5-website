@@ -43,7 +43,9 @@ Then you can import it in your project with `import ParticleSimulator from 'part
 To use it you can simply add the component in your project like this:
 
 ```jsx
-<ParticleSimulator particleCount={isMobile ? 1000 : 3000}
+<ParticleSimulator canvasWidth={window.innerWidth} canvasHeight={window.innerHeight}
+                   particleCountMobile={PARTICLES_COUNT_MOBILE}
+                   particleCountComputer={PARTICLES_COUNT_COMPUTER}
                    fixedDeltaTime={1 / 50}
                    frameRate={60}
                    spawnAreaWidth={100} spawnAreaHeight={100}/>
@@ -51,7 +53,10 @@ To use it you can simply add the component in your project like this:
 
 The component takes 6 props:
 
-- `particleCount`: the number of particles to spawn
+- `canvasWidth` and `canvasHeight` are the width and height of the canvas. You can use `window.innerWidth`
+  and `window.innerHeight` to make it fit the screen.
+- `particleCountMobile`: the number of particles to spawn on mobile devices
+- `particleCountComputer`: the number of particles to spawn on desktop devices
 - `fixedDeltaTime`: the fixed delta time to use for the physics simulation (in seconds)
 - `frameRate`: the frame rate to use for the physics simulation (in frames per second)
 - `spawnAreaWidth`: the width of the spawn area
