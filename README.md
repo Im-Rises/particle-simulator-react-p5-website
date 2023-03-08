@@ -11,16 +11,16 @@
 
 ## Description
 
-This is a particle simulator made with React Typescript and p5.js.
+This is a particle simulator package made with React Typescript and p5.js.
 
-You can try it online from your browser [here](https://im-rises.github.io/particle-simulator-react-p5/).
+## 🚀🚀[You can try it online from your browser](https://im-rises.github.io/particle-simulator-react-p5/) 🚀🚀
 
 It works on desktop and mobile as well with different controls (check the `controls` section).
 
 The particles are set randomly on the screen in a square shape. Their color change according to their speed from blue to
 purple and then to pink.
 
-The package is available on npm [here](https://www.npmjs.com/package/particle-simulator-react-p5).
+## 🚀🚀 [The package is available on npm](https://www.npmjs.com/package/particle-simulator-react-p5) 🚀🚀
 
 ## Screenshots
 
@@ -49,7 +49,47 @@ To use it you can simply add the component in your project like this:
                    spawnAreaWidth={100} spawnAreaHeight={100}/>
 ```
 
+The component takes 6 props:
+
+- `particleCount`: the number of particles to spawn
+- `fixedDeltaTime`: the fixed delta time to use for the physics simulation (in seconds)
+- `frameRate`: the frame rate to use for the physics simulation (in frames per second)
+- `spawnAreaWidth`: the width of the spawn area
+- `spawnAreaHeight`: the height of the spawn area
+
 This will create a canvas with 3000 particles on desktop and 1000 on mobile.
+
+> **Note**  
+> The number of particles can be limited by the browser. That's why you should not set a too high number of particles.
+> To check if your app is running under a mobile device you can use the `isMobile` variable from
+> the `react-device-detect` and set the number of particles accordingly.
+
+You can find an example of the project in the GitHub
+repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
+
+> **Warning**  
+> The React-p5 dependency may have issues with the index.js file.
+
+```js
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>
+);
+
+```
+
+Please delete the React.StrictMode tag in the index.js file and replace it with the code below.
+
+```js
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <>
+        <App/>
+    </>
+);
+```
 
 ## Controls
 
@@ -64,6 +104,7 @@ attract/repel tap on the screen.
 [![Node.js CI](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml)
 [![ESLint](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml)
 [![CodeQL](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml)
+[![Node.js Package](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/npm-publish.yml)
 
 The project is set up to run the following actions:
 
@@ -71,6 +112,7 @@ The project is set up to run the following actions:
 - node.js.yml : Runs the tests for the Node.js project.
 - eslint.yml : Runs the ESLint linter on the project.
 - codeql.yml : Runs the CodeQL linter on the project.
+- npm-publish.yml : Publishes the package to npm.
 
 ## Libraries
 
@@ -105,6 +147,14 @@ P5.js:
 
 P5.js React:  
 <https://www.npmjs.com/package/react-p5>
+
+## Links
+
+Check the source code
+on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://github.com/im-rises/particle-simulator-react-p5)
+
+Check the package
+on [![npm](https://user-images.githubusercontent.com/59691442/223556055-4e9ef014-79d4-4136-ac07-b837b49066c8.svg)](https://www.npmjs.com/package/particle-simulator-react-p5)
 
 ## Contributors
 
