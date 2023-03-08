@@ -17,7 +17,8 @@ const App: React.FC = () => (
 				linkText={GITHUB_LINK_TEXT}/>
 		</header>
 		<div className={'particle-sim-canvas'}>
-			<ParticleSimulator particleCount={isMobile ? PARTICLES_COUNT_MOBILE : PARTICLES_COUNT_COMPUTER}
+			<ParticleSimulator canvasWidth={window.innerWidth} canvasHeight={window.innerHeight}
+				particleCount={isMobile ? PARTICLES_COUNT_MOBILE : PARTICLES_COUNT_COMPUTER}
 				fixedDeltaTime={1 / 50}
 				frameRate={60}
 				spawnAreaWidth={100} spawnAreaHeight={100}/>
