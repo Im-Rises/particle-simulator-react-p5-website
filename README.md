@@ -9,8 +9,6 @@
     <img src="https://img.shields.io/badge/p5%20js-ED225D?style=for-the-badge&logo=p5dotjs&logoColor=white" alt="cssLogo" style="height:50px;">
 </p>
 
-# NOT WORKING WIP ISSUES SORRY
-
 ## Description
 
 This is a particle simulator package made with React Typescript and p5.js.
@@ -66,8 +64,32 @@ This will create a canvas with 3000 particles on desktop and 1000 on mobile.
 > To check if your app is running under a mobile device you can use the `isMobile` variable from
 > the `react-device-detect` and set the number of particles accordingly.
 
-You can find an example of the project in the github
+You can find an example of the project in the GitHub
 repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
+
+> **Warning**  
+> The React-p5 dependency may have issues with the index.js file.
+
+```js
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>
+);
+
+```
+
+Please delete the React.StrictMode tag in the index.js file and replace it with the code below.
+
+```js
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <>
+        <App/>
+    </>
+);
+```
 
 ## Controls
 
