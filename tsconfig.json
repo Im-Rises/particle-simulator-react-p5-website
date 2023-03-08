@@ -1,27 +1,121 @@
+//{
+//  "compilerOptions": {
+//    "target": "es5",
+//    "lib": [
+//      "dom",
+//      "dom.iterable",
+//      "esnext"
+//    ],
+//    "allowJs": true,
+//    "skipLibCheck": true,
+//    "esModuleInterop": true,
+//    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "outDir": "dist",
+//    "declaration": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "noFallthroughCasesInSwitch": true,
+//    "module": "esnext",
+//    "moduleResolution": "node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": true,
+//    "jsx": "react-jsx"
+//  },
+//  "include": [
+//    "src"
+//  ]
+//}
+
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "jsx": "react",
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "moduleResolution": "node"
   },
   "include": [
-    "src",
-    "src/settings/react-app-env.d.ts"
+    "src"
   ]
 }
+
+//{
+//  "compilerOptions": {
+//    "target": "esnext",
+//    "module": "esnext",
+//    "jsx": "react-jsx",
+//    "declaration": true,
+//    "outDir": "./dist",
+//    "esModuleInterop": true,
+//    "allowJs": true,
+//    "skipLibCheck": true,
+//    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "noFallthroughCasesInSwitch": true,
+//    "moduleResolution": "node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": true
+//  },
+//  "include": [
+//    "./src/**/*"
+//  ],
+//  "exclude": [
+//    "node_modules"
+//  ],
+//  "typeAcquisition": {
+//    "enable": true,
+//    "include": [
+//      "react",
+//      "react-dom"
+//    ]
+//  },
+//  "compileOnSave": true,
+//  "buildOnSave": true,
+//  "watchOptions": {
+//    "excludeDirectories": [
+//      "node_modules"
+//    ]
+//  },
+//  "atom": {
+//    "rewriteTsconfig": false
+//  }
+//}
+//
+//
+////{
+////  "compilerOptions": {
+////    "target": "es5",
+////    "lib": [
+////      "dom",
+////      "dom.iterable",
+////      "esnext"
+////    ],
+////    "outDir": "dist",
+////    "allowJs": true,
+////    "skipLibCheck": true,
+////    "esModuleInterop": true,
+////    "allowSyntheticDefaultImports": true,
+////    "strict": true,
+////    "forceConsistentCasingInFileNames": true,
+////    "noFallthroughCasesInSwitch": true,
+////    "module": "esnext",
+////    "moduleResolution": "node",
+////    "resolveJsonModule": true,
+////    "isolatedModules": true,
+////    "noEmit": true,
+////    "jsx": "react-jsx"
+////  },
+////  "include": [
+////    "src/**/*"
+////    //    "src/settings/react-app-env.d.ts"
+////  ],
+////  "exclude": [
+////    "node_modules"
+////  ]
+////}

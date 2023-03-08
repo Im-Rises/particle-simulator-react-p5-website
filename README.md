@@ -9,6 +9,8 @@
     <img src="https://img.shields.io/badge/p5%20js-ED225D?style=for-the-badge&logo=p5dotjs&logoColor=white" alt="cssLogo" style="height:50px;">
 </p>
 
+# NOT WORKING WIP ISSUES SORRY
+
 ## Description
 
 This is a particle simulator package made with React Typescript and p5.js.
