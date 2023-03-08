@@ -6,6 +6,8 @@ import Attractor from '../Classes/Attractor';
 import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
+	canvasWidth: number;
+	canvasHeight: number;
 	particleCount: number;
 	frameRate: number;
 	fixedDeltaTime: number;
@@ -26,9 +28,9 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		// Create canvas
-		const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.P2D).parent(canvasParentRef);
+		const canvas = p5.createCanvas(props.canvasWidth, props.canvasHeight, p5.P2D).parent(canvasParentRef);
 		// Create graphics
-		screenBuffer = p5.createGraphics(p5.windowWidth, p5.windowHeight, p5.P2D);
+		screenBuffer = p5.createGraphics(props.canvasWidth, props.canvasHeight, p5.P2D);
 
 		// Set frame rate to 60
 		p5.frameRate(props.frameRate);
@@ -88,8 +90,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 	// Sketch window resize
 	const windowResized = (p5: p5Types) => {
-		p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-		screenBuffer.resizeCanvas(p5.windowWidth, p5.windowHeight);
+		p5.resizeCanvas(props.canvasWidth, props.canvasHeight);
+		screenBuffer.resizeCanvas(props.canvasWidth, props.canvasHeight);
 	};
 
 	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;
