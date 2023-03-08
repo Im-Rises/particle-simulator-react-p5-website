@@ -48,7 +48,9 @@ To use it you can simply add the component in your project like this:
                    particleCountComputer={PARTICLES_COUNT_COMPUTER}
                    fixedDeltaTime={1 / 50}
                    frameRate={60}
-                   spawnAreaWidth={100} spawnAreaHeight={100}/>
+                   spawnAreaWidth={100} spawnAreaHeight={100}
+                   resizeGetter={resizeGetter}
+/>
 ```
 
 The component takes 6 props:
@@ -61,16 +63,25 @@ The component takes 6 props:
 - `frameRate`: the frame rate to use for the physics simulation (in frames per second)
 - `spawnAreaWidth`: the width of the spawn area
 - `spawnAreaHeight`: the height of the spawn area
+- `resizeGetter`: a function that returns the width and height of the canvas. It is used to resize the canvas
+  when the window is resized. In the example above I use `window.innerWidth` and `window.innerHeight`.
 
-This will create a canvas with 3000 particles on desktop and 1000 on mobile.
+Example:
 
-> **Note**  
-> The number of particles can be limited by the browser. That's why you should not set a too high number of particles.
-> To check if your app is running under a mobile device you can use the `isMobile` variable from
-> the `react-device-detect` and set the number of particles accordingly.
+```jsx
+const resizeGetter = () => ({
+    width: window.innerWidth,
+    height: window.innerHeight,
+});
+```
 
-You can find an example of the project in the GitHub
+This will create a canvas with 3000 particles on desktop and 1000 on mobile in fullscreen which will be resized
+when the window is resized.
+
+You can find the complete example of the project in the GitHub
 repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
+
+---
 
 > **Warning**  
 > The React-p5 dependency may have issues with the index.js file.

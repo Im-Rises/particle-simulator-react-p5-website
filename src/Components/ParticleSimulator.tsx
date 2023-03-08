@@ -15,6 +15,7 @@ type ComponentProps = {
 	fixedDeltaTime: number;
 	spawnAreaWidth: number;
 	spawnAreaHeight: number;
+	resizeGetter: () => {width: number; height: number};
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
@@ -90,17 +91,15 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		p5.image(screenBuffer, 0, 0);
 	};
 
-	// // Sketch window resize
-	// const windowResized = (p5: p5Types) => {
-	// 	p5.resizeCanvas(props.canvasWidth, props.canvasHeight);
-	// 	screenBuffer.resizeCanvas(props.canvasWidth, props.canvasHeight);
-	// 	console.log('Resized canvas');
-	// };
+	// Sketch window resize
+	const windowResized = (p5: p5Types) => {
+		const newDim = props.resizeGetter();
+		p5.resizeCanvas(newDim.width, newDim.height);
+		screenBuffer.resizeCanvas(newDim.width, newDim.height);
+	};
 
 	return (
-		<div /* style={{overflow: 'hidden'}} */>
-			<Sketch setup={setup} draw={draw} /* windowResized={windowResized} *//>
-		</div>
+		<Sketch setup={setup} draw={draw} windowResized={windowResized}/>
 	);
 };
 
