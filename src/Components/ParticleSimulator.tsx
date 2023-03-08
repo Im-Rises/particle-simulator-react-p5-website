@@ -90,14 +90,18 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		p5.image(screenBuffer, 0, 0);
 	};
 
-	// Sketch window resize
-	const windowResized = (p5: p5Types) => {
-		p5.resizeCanvas(props.canvasWidth, props.canvasHeight);
-		screenBuffer.resizeCanvas(props.canvasWidth, props.canvasHeight);
-		console.log('Resized canvas');
-	};
+	// // Sketch window resize
+	// const windowResized = (p5: p5Types) => {
+	// 	p5.resizeCanvas(props.canvasWidth, props.canvasHeight);
+	// 	screenBuffer.resizeCanvas(props.canvasWidth, props.canvasHeight);
+	// 	console.log('Resized canvas');
+	// };
 
-	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;
+	return (
+		<div /* style={{overflow: 'hidden'}} */>
+			<Sketch setup={setup} draw={draw} /* windowResized={windowResized} *//>
+		</div>
+	);
 };
 
 export default ParticleSimulator;
