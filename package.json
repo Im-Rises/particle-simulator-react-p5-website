@@ -3,7 +3,7 @@
   "description": "Particle simulator effect made with React and p5.js",
   "homepage": "https://im-rises.github.io/particle-simulator-react-p5/",
   "repository": "https://github.com/Im-Rises/particle-simulator-react-p5",
-  "version": "0.3.4",
+  "version": "0.3.6",
   "private": false,
   "license": "MIT",
   "publishConfig": {
@@ -16,12 +16,16 @@
     "package.json",
     "dist/Components/ParticleSimulator.js",
     "dist/Components/ParticleSimulator.d.ts",
+    "dist/Components/ParticleSimulator.d.ts.map",
     "dist/Classes/Particle.js",
     "dist/Classes/Particle.d.ts",
+    "dist/Classes/Particle.d.ts.map",
     "dist/Classes/Attractor.js",
     "dist/Classes/Attractor.d.ts",
+    "dist/Classes/Attractor.d.ts.map",
     "dist/Constants/Constants.js",
-    "dist/Constants/Constants.d.ts"
+    "dist/Constants/Constants.d.ts",
+    "dist/Constants/Constants.d.ts.map"
   ],
   "keywords": [
     "react",
