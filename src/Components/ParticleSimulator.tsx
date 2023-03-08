@@ -2,13 +2,15 @@ import React from 'react';
 import Sketch from 'react-p5';
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import p5Types from 'p5';
+import {isMobile} from 'react-device-detect';
 import Attractor from '../Classes/Attractor';
 import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
 	canvasWidth: number;
 	canvasHeight: number;
-	particleCount: number;
+	particleCountMobile: number;
+	particleCountComputer: number;
 	frameRate: number;
 	fixedDeltaTime: number;
 	spawnAreaWidth: number;
@@ -39,7 +41,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		attractor = new Attractor(p5);
 
 		// Create and set the particles around the center of the screen as a square
-		for (let i = 0; i < props.particleCount; i++) {
+		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			particleArray.push(new Particle(p5,
 				attractor,
 				p5.random(-props.spawnAreaWidth / 2, props.spawnAreaWidth / 2) + (p5.width / 2),
@@ -92,6 +94,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	const windowResized = (p5: p5Types) => {
 		p5.resizeCanvas(props.canvasWidth, props.canvasHeight);
 		screenBuffer.resizeCanvas(props.canvasWidth, props.canvasHeight);
+		console.log('Resized canvas');
 	};
 
 	return <Sketch setup={setup} draw={draw} windowResized={windowResized}/>;
