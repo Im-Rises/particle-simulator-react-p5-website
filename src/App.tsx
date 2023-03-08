@@ -10,7 +10,10 @@ import {
 } from './Constants/constant-particle-simulator';
 
 const App: React.FC = () => {
-	console.log('App.tsx');
+	const resizeGetter = () => ({
+		width: window.innerWidth,
+		height: window.innerHeight,
+	});
 
 	return (
 		<div className='App'>
@@ -24,7 +27,9 @@ const App: React.FC = () => {
 					particleCountComputer={PARTICLES_COUNT_COMPUTER}
 					fixedDeltaTime={1 / 50}
 					frameRate={60}
-					spawnAreaWidth={100} spawnAreaHeight={100}/>
+					spawnAreaWidth={100} spawnAreaHeight={100}
+					resizeGetter={resizeGetter}
+				/>
 			</div>
 		</div>
 	);
