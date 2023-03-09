@@ -6,6 +6,7 @@ html, body {
   -webkit-user-select: none;
   cursor: none;
   font-size: 16px;
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=index.css.map */
