@@ -50,7 +50,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		// Create and set the particles around the center of the screen as a square
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
-			const randomFloat = (min: number, max: number) => min + (max - min) * Math.random();
+			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
 			const randomAngle1 = randomFloat(0, 2 * Math.PI);
 			const randomAngle2 = randomFloat(0, 2 * Math.PI);
 			const posX = (p5.width / 2) + (props.spawnAreaRadius * Math.cos(randomAngle1) * Math.sin(randomAngle2));
