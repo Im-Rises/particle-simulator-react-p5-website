@@ -28,12 +28,12 @@ const App: React.FC = () => {
 					parentRef={divRef}
 					particleCountMobile={PARTICLES_COUNT_MOBILE}
 					particleCountComputer={PARTICLES_COUNT_COMPUTER}
-					fixedUpdate={50}
+					fixedUpdate={60}
 					frameRate={60}
 					spawnAreaRadius={100}
 					gravitationalConstant={1}
-					particlesMass={1}
-					attractorMass={100}
+					particlesMass={50}
+					attractorMass={250}
 					friction={0.99}
 					distanceOffset={10}
 				/>
