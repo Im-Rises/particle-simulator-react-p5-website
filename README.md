@@ -32,6 +32,14 @@ purple and then to pink.
 
 https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
 
+## TODO
+
+- [ ] Add a way to resize the canvas automatically
+- [ ] Add a way to change all parameters in the component
+- [ ] Add damping parameter to the particles
+- [ ] Add a way to change the color of the particles
+- [ ] Set up as a sphere instead of a square shape when initializing the particles
+
 ## Package installation
 
 To install it type `npm install particle-simulator-react-p5` in your terminal to install it.

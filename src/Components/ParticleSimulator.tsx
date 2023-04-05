@@ -1,39 +1,45 @@
 import React from 'react';
 import Sketch from 'react-p5';
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
-import p5Types from 'p5';
+import type p5Types from 'p5';
 import {isMobile} from 'react-device-detect';
 import Attractor from '../Classes/Attractor';
 import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
 
 type ComponentProps = {
-	canvasWidth: number;
-	canvasHeight: number;
+	parentRef: React.RefObject<HTMLElement>;
 	particleCountMobile: number;
 	particleCountComputer: number;
 	frameRate: number;
-	fixedDeltaTime: number;
-	spawnAreaWidth: number;
-	spawnAreaHeight: number;
-	resizeGetter: () => {width: number; height: number};
+	fixedUpdate: number;
+	spawnAreaRadius: number;
+	gravitationalConstant: number;
+	particlesMass: number;
+	attractorMass: number;
+	friction: number;
+	distanceOffset: number;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 	// Time variables
 	let previousTime = 0;
 	let fixedUpdateAccum = 0;
+	const fixedDeltaTime = 1 / props.fixedUpdate;
+
 	// Attractor and Particles array
 	const particleArray: Particle[] = [];
 	let attractor: Attractor;
+
 	// P5 variables
 	let screenBuffer: p5Types.Graphics;
 
 	// Sketch setup
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		// Create canvas
-		const canvas = p5.createCanvas(props.canvasWidth, props.canvasHeight, p5.P2D).parent(canvasParentRef);
+		const canvas = p5.createCanvas(props.parentRef.current!.clientWidth, props.parentRef.current!.clientHeight, p5.P2D)
+			.parent(canvasParentRef);
+
 		// Create graphics
-		screenBuffer = p5.createGraphics(props.canvasWidth, props.canvasHeight, p5.P2D);
+		screenBuffer = p5.createGraphics(props.parentRef.current!.clientWidth, props.parentRef.current!.clientHeight, p5.P2D);
 
 		// Set frame rate to 60
 		p5.frameRate(props.frameRate);
@@ -43,10 +49,16 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Create and set the particles around the center of the screen as a square
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
+			// Define particles spawn in a circle
+			const angle1 = p5.random(-1, 1);
+			const angle2 = p5.random(-1, 1);
+			const posX = (props.parentRef.current!.clientWidth / 2) + (props.spawnAreaRadius * Math.sin(angle1) * Math.cos(angle2));
+			const posY = (props.parentRef.current!.clientHeight / 2) + (props.spawnAreaRadius * Math.sin(angle1) * Math.sin(angle2));
+
 			particleArray.push(new Particle(p5,
-				attractor,
-				p5.random(-props.spawnAreaWidth / 2, props.spawnAreaWidth / 2) + (p5.width / 2),
-				p5.random(-props.spawnAreaHeight / 2, props.spawnAreaHeight / 2) + (p5.height / 2)),
+				posX,
+				posY,
+				props.particlesMass),
 			);
 		}
 
@@ -69,12 +81,12 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		// And the toggleAttractedRepulsed() function is called in the mousePressed() callback
 
 		/* Update physics (fixed update) */
-		if (fixedUpdateAccum >= props.fixedDeltaTime) {
+		if (fixedUpdateAccum >= fixedDeltaTime) {
 			// Update attractor
 			attractor.update(p5);
 			// Update particles
 			particleArray.forEach(particle => {
-				particle.update(p5, attractor, props.fixedDeltaTime);
+				particle.update(p5, attractor, fixedDeltaTime, props.gravitationalConstant, props.friction, props.distanceOffset);
 			});
 			fixedUpdateAccum = 0;
 		}
@@ -93,9 +105,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 	// Sketch window resize
 	const windowResized = (p5: p5Types) => {
-		const newDim = props.resizeGetter();
-		p5.resizeCanvas(newDim.width, newDim.height);
-		screenBuffer.resizeCanvas(newDim.width, newDim.height);
+		p5.resizeCanvas(props.parentRef.current!.clientWidth, props.parentRef.current!.clientHeight);
+		screenBuffer.resizeCanvas(props.parentRef.current!.clientWidth, props.parentRef.current!.clientHeight);
 	};
 
 	return (
