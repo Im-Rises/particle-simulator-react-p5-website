@@ -4,4 +4,18 @@
   overflow: hidden;
 }
 
+.wait-sim-canvas {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white;
+  font-size: 6em;
+  background: black;
+  margin: 0;
+  padding: 0;
+}
+
 /*# sourceMappingURL=App.css.map */

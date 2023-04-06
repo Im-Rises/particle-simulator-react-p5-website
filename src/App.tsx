@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ParticleSimulator from './Components/ParticleSimulator';
 import GitHubProjectPanel from './Components/GitHubProjectPanel';
 import './App.css';
@@ -10,12 +10,14 @@ import {
 } from './Constants/constant-particle-simulator';
 
 const App: React.FC = () => {
-	// Define div ref
+	const [isLoaded, setIsLoaded] = useState(false);
 	const divRef = React.useRef<HTMLDivElement>(null);
-	const resizeGetter = () => ({
-		width: window.innerWidth,
-		height: window.innerHeight,
-	});
+
+	useEffect(() => {
+		if (divRef.current) {
+			setIsLoaded(true);
+		}
+	}, [divRef]);
 
 	return (
 		<div className='App'>
@@ -24,20 +26,24 @@ const App: React.FC = () => {
 					linkText={GITHUB_LINK_TEXT}/>
 			</header>
 			<div className={'particle-sim-canvas'} ref={divRef}>
-				<ParticleSimulator
-					parentRef={divRef}
-					particleCountMobile={PARTICLES_COUNT_MOBILE}
-					particleCountComputer={PARTICLES_COUNT_COMPUTER}
-					fixedUpdate={60}
-					frameRate={60}
-					spawnAreaRadius={100}
-					gravitationalConstant={1}
-					particlesMass={50}
-					attractorMass={250}
-					friction={0.99}
-					distanceOffset={10}
-					pixelsPerMeter={100}
-				/>
+				{isLoaded ? (
+					<ParticleSimulator
+						parentRef={divRef}
+						particleCountMobile={PARTICLES_COUNT_MOBILE}
+						particleCountComputer={PARTICLES_COUNT_COMPUTER}
+						fixedUpdate={60}
+						frameRate={60}
+						spawnAreaRadius={100}
+						gravitationalConstant={1}
+						particlesMass={50}
+						attractorMass={250}
+						friction={0.99}
+						distanceOffset={10}
+						pixelsPerMeter={100}
+					/>
+				) : (
+					<p className={'wait-sim-canvas'}>Loading...</p>
+				)}
 			</div>
 		</div>
 	);
