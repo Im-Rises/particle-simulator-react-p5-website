@@ -2,10 +2,12 @@ import type p5Types from 'p5';
 
 class Attractor {
 	position: p5Types.Vector;
-	mass = 1000;
+	mass = 250;
+	forceInversion = 1;
 
-	constructor(p5: p5Types) {
+	constructor(p5: p5Types, mass: number) {
 		this.position = p5.createVector(p5.mouseX, p5.mouseY);
+		this.mass = mass;
 	}
 
 	update(p5: p5Types) {
@@ -17,6 +19,10 @@ class Attractor {
 		p5.stroke(255);
 		p5.strokeWeight(4);
 		p5.point(this.position.x, this.position.y);
+	}
+
+	toggleForceInversion() {
+		this.forceInversion *= -1;
 	}
 }
 

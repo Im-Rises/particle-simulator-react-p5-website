@@ -32,6 +32,11 @@ purple and then to pink.
 
 https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
 
+## TODO
+
+- [ ] Add a way to change the color of the particles
+- [ ] Change color of particles according to distance from attractor with a sort of sun effect
+
 ## Package installation
 
 To install it type `npm install particle-simulator-react-p5` in your terminal to install it.
@@ -43,37 +48,38 @@ Then you can import it in your project with `import ParticleSimulator from 'part
 To use it you can simply add the component in your project like this:
 
 ```jsx
-<ParticleSimulator canvasWidth={window.innerWidth} canvasHeight={window.innerHeight}
-                   particleCountMobile={PARTICLES_COUNT_MOBILE}
-                   particleCountComputer={PARTICLES_COUNT_COMPUTER}
-                   fixedDeltaTime={1 / 50}
-                   frameRate={60}
-                   spawnAreaWidth={100} spawnAreaHeight={100}
-                   resizeGetter={resizeGetter}
-/>
+<div ref={divRef}>
+    <ParticleSimulator
+        parentRef={divRef}
+        particleCountMobile={1000}
+        particleCountComputer={3000}
+        fixedUpdate={60}
+        frameRate={60}
+        spawnAreaRadius={100}
+        gravitationalConstant={1}
+        particlesMass={50}
+        attractorMass={250}
+        friction={0.99}
+        distanceOffset={10}
+        pixelsPerMeter={100}
+    />
+</div>
 ```
 
 The component takes 6 props:
 
-- `canvasWidth` and `canvasHeight` are the width and height of the canvas. You can use `window.innerWidth`
-  and `window.innerHeight` to make it fit the screen.
-- `particleCountMobile`: the number of particles to spawn on mobile devices
-- `particleCountComputer`: the number of particles to spawn on desktop devices
-- `fixedDeltaTime`: the fixed delta time to use for the physics simulation (in seconds)
-- `frameRate`: the frame rate to use for the physics simulation (in frames per second)
-- `spawnAreaWidth`: the width of the spawn area
-- `spawnAreaHeight`: the height of the spawn area
-- `resizeGetter`: a function that returns the width and height of the canvas. It is used to resize the canvas
-  when the window is resized. In the example above I use `window.innerWidth` and `window.innerHeight`.
-
-Example:
-
-```jsx
-const resizeGetter = () => ({
-    width: window.innerWidth,
-    height: window.innerHeight,
-});
-```
+- `parentRef` - a reference to the parent div of the canvas. It is used to get the size of the canvas.
+- `particleCountMobile` - the number of particles on mobile devices.
+- `particleCountComputer` - the number of particles on desktop devices.
+- `fixedUpdate` - the number of fixed updates per second.
+- `frameRate` - the number of frames per second.
+- `spawnAreaRadius` - the radius of the spawn area of the particles (in pixels).
+- `gravitationalConstant` - the gravitational constant of the simulation.
+- `particlesMass` - the mass of the particles.
+- `attractorMass` - the mass of the attractor.
+- `friction` - the friction of the particles.
+- `distanceOffset` - the distance offset of the particles.
+- `pixelsPerMeter` - the number of pixels per meter (in meters).
 
 This will create a canvas with 3000 particles on desktop and 1000 on mobile in fullscreen which will be resized
 when the window is resized.

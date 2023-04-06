@@ -1,46 +1,59 @@
 import p5Types from 'p5';
 import type Attractor from './Attractor';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const G = 1000;
-const friction = 0.99;
-const drag = 0.5;
-const distanceCenterOffset = 1000;
-const colorNormalizer = 100;
-
-// Can be member of Particle class
-const mass = 1;
-let forceInversion = 1;
-
 class Particle {
+	static mass = 50;
+	static friction = 0.99;
+	static distanceCenterOffset = 10;
+	static centerColor: p5Types.Color;
+
+	static setMass(mass: number) {
+		Particle.mass = mass;
+	}
+
+	static setFriction(friction: number) {
+		Particle.friction = friction;
+	}
+
+	static setDistanceCenterOffset(distanceCenterOffset: number) {
+		Particle.distanceCenterOffset = distanceCenterOffset;
+	}
+
+	static setCenterColor(centerColor: p5Types.Color) {
+		Particle.centerColor = centerColor;
+	}
+
 	position: p5Types.Vector;
 	velocity: p5Types.Vector;
 	color: p5Types.Color;
 
-	constructor(p5: p5Types, target: Attractor, x: number, y: number) {
+	constructor(p5: p5Types, x: number, y: number, color: p5Types.Color) {
 		this.position = p5.createVector(x, y);
 		this.velocity = p5.createVector(0, 0);
-		this.color = p5.color(0, 255, 255, 255);
+		this.color = color;
 	}
 
-	update(p5: p5Types, target: Attractor, deltaTime: number) {
+	update(p5: p5Types, target: Attractor, deltaTime: number, G: number, pixelPerMeter: number) {
+		/* Convert position to normalized units */
+		const positionNormalized = this.position.copy().div(pixelPerMeter);
+
 		/* Calculate acceleration */
-		const toTarget = p5Types.Vector.sub(target.position, this.position);
-		const m1m2 = target.mass * mass;
-		// const distanceSquared = toTarget.magSq();
-		const distanceSquared = toTarget.magSq() + distanceCenterOffset;
+		const toTarget = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
+		const distance = (toTarget.copy().mag() / pixelPerMeter);
+		const distanceSquared = (distance * distance) + Particle.distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
-		const force = toTarget.copy().normalize().mult(G * m1m2 / distanceSquared);
+		const force = toTarget.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquared);
 		// Acceleration = Force / mass
-		const acceleration = force.copy().div(mass).mult(forceInversion);
-
-		/* Integration */
+		const acceleration = (force.copy().div(Particle.mass)).mult(target.forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
-		this.position.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
+		positionNormalized.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
 		this.velocity.add(acceleration.copy().mult(deltaTime));
-		this.velocity.mult(friction);
+		this.velocity.mult(Particle.friction);
+
+		/* Convert position back to pixel units */
+		this.position = positionNormalized.copy().mult(pixelPerMeter);
 
 		/* Prevent particles from going out of the screen */
 		if (this.position.x < 0) {
@@ -59,10 +72,8 @@ class Particle {
 			this.position.y = 0;
 		}
 
-		/* Calculate new color according to velocity */
-		const velocityMagnitude = this.velocity.mag();
-		const velocityMagnitudeNormalized = velocityMagnitude / colorNormalizer;
-		this.color = p5.color(velocityMagnitudeNormalized * 255, 255 - (velocityMagnitudeNormalized * 255), 255, 255);
+		// /* Calculate new color according to distance from attractor */
+		// this.color = p5.lerpColor(this.color, Particle.centerColor, distance / 1000);
 	}
 
 	show(p5: p5Types) {
@@ -71,11 +82,5 @@ class Particle {
 		p5.point(this.position.x, this.position.y);
 	}
 }
-
-const toggleAttractedRepulsed = () => {
-	forceInversion = -forceInversion;
-};
-
-export {toggleAttractedRepulsed};
 
 export default Particle;

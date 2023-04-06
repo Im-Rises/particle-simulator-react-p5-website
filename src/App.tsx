@@ -10,6 +10,8 @@ import {
 } from './Constants/constant-particle-simulator';
 
 const App: React.FC = () => {
+	// Define div ref
+	const divRef = React.useRef<HTMLDivElement>(null);
 	const resizeGetter = () => ({
 		width: window.innerWidth,
 		height: window.innerHeight,
@@ -21,14 +23,20 @@ const App: React.FC = () => {
 				<GitHubProjectPanel link={GITHUB_URL}
 					linkText={GITHUB_LINK_TEXT}/>
 			</header>
-			<div className={'particle-sim-canvas'}>
-				<ParticleSimulator canvasWidth={window.innerWidth} canvasHeight={window.innerHeight}
+			<div className={'particle-sim-canvas'} ref={divRef}>
+				<ParticleSimulator
+					parentRef={divRef}
 					particleCountMobile={PARTICLES_COUNT_MOBILE}
 					particleCountComputer={PARTICLES_COUNT_COMPUTER}
-					fixedDeltaTime={1 / 50}
+					fixedUpdate={60}
 					frameRate={60}
-					spawnAreaWidth={100} spawnAreaHeight={100}
-					resizeGetter={resizeGetter}
+					spawnAreaRadius={100}
+					gravitationalConstant={1}
+					particlesMass={50}
+					attractorMass={250}
+					friction={0.99}
+					distanceOffset={10}
+					pixelsPerMeter={100}
 				/>
 			</div>
 		</div>
