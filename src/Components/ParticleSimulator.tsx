@@ -51,6 +51,10 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		// Set frame rate to 60
 		p5.frameRate(props.frameRate);
 
+		// Set up init mouse position
+		p5.mouseX = p5.width / 2;
+		p5.mouseY = p5.height / 2;
+
 		// Create attractor
 		attractor = new Attractor(p5, props.attractorMass);
 
