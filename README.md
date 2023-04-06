@@ -48,21 +48,27 @@ Then you can import it in your project with `import ParticleSimulator from 'part
 To use it you can simply add the component in your project like this:
 
 ```jsx
-<div ref={divRef}>
-    <ParticleSimulator
-        parentRef={divRef}
-        particleCountMobile={1000}
-        particleCountComputer={3000}
-        fixedUpdate={60}
-        frameRate={60}
-        spawnAreaRadius={100}
-        gravitationalConstant={1}
-        particlesMass={50}
-        attractorMass={250}
-        friction={0.99}
-        distanceOffset={10}
-        pixelsPerMeter={100}
-    />
+            <div className={'particle-sim-canvas'} ref={divRef}>
+    {isLoaded ? (
+        <ParticleSimulator
+            parentRef={divRef}
+            particleCountMobile={PARTICLES_COUNT_MOBILE}
+            particleCountComputer={PARTICLES_COUNT_COMPUTER}
+            fixedUpdate={60}
+            frameRate={60}
+            spawnAreaRadius={100}
+            gravitationalConstant={1}
+            particlesMass={50}
+            attractorMass={250}
+            friction={0.99}
+            distanceOffset={10}
+            pixelsPerMeter={100}
+            initColor={[0, 255, 255, 200]}
+            finalColor={[255, 0, 255, 200]}
+            colorModifierMeters={0.3}/>
+    ) : (
+        <p className={'wait-sim-canvas'}>Loading...</p>
+    )}
 </div>
 ```
 
@@ -80,12 +86,18 @@ The component takes 6 props:
 - `friction` - the friction of the particles.
 - `distanceOffset` - the distance offset of the particles.
 - `pixelsPerMeter` - the number of pixels per meter (in meters).
+- `initColor` - the initial color of the particles (in RGB).
+- `finalColor` - the final color of the particles (in RGB).
+- `colorModifierMeters` - the number of meters after which the color of the particles changes.
 
 This will create a canvas with 3000 particles on desktop and 1000 on mobile in fullscreen which will be resized
 when the window is resized.
 
 You can find the complete example of the project in the GitHub
 repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
+
+> **Note**  
+> Be sure to do like in the example, the parent div of the canvas must be set before the p5 canvas is created.
 
 ---
 
