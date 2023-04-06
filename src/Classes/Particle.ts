@@ -11,16 +11,20 @@ const pixelPerMeter = 100;
 const distanceCenterOffset = 10;
 
 class Particle {
+	static mass = 50;
+
+	static setMass(mass: number) {
+		Particle.mass = mass;
+	}
+
 	position: p5Types.Vector;
 	velocity: p5Types.Vector;
 	color: p5Types.Color;
-	mass: number;
 
-	constructor(p5: p5Types, x: number, y: number, mass: number) {
+	constructor(p5: p5Types, x: number, y: number) {
 		this.position = p5.createVector(x, y);
 		this.velocity = p5.createVector(0, 0);
 		this.color = p5.color(0, 255, 255, 255);
-		this.mass = mass;
 	}
 
 	update(p5: p5Types, target: Attractor, deltaTime: number) {
@@ -33,9 +37,9 @@ class Particle {
 		const distanceSquared = (distance * distance) + distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
-		const force = toTarget.copy().normalize().mult(G * target.mass * this.mass / distanceSquared);
+		const force = toTarget.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquared);
 		// Acceleration = Force / mass
-		const acceleration = (force.copy().div(this.mass)).mult(forceInversion);
+		const acceleration = (force.copy().div(Particle.mass)).mult(forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
 		positionNormalized.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
