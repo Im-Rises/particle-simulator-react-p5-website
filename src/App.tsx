@@ -40,6 +40,8 @@ const App: React.FC = () => {
 						friction={0.99}
 						distanceOffset={10}
 						pixelsPerMeter={100}
+						initColor={[0, 255, 255, 200]}
+						finalColor={[255, 0, 0, 200]}
 					/>
 				) : (
 					<p className={'wait-sim-canvas'}>Loading...</p>
