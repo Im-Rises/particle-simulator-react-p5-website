@@ -36,7 +36,8 @@ const App: React.FC = () => {
 					attractorMass={250}
 					friction={0.99}
 					distanceOffset={10}
-					pixelsPerMeter={100}/>
+					pixelsPerMeter={100}
+				/>
 			</div>
 		</div>
 	);

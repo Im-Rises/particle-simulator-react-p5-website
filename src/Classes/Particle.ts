@@ -5,6 +5,7 @@ class Particle {
 	static mass = 50;
 	static friction = 0.99;
 	static distanceCenterOffset = 10;
+	static centerColor: p5Types.Color;
 
 	static setMass(mass: number) {
 		Particle.mass = mass;
@@ -18,14 +19,18 @@ class Particle {
 		Particle.distanceCenterOffset = distanceCenterOffset;
 	}
 
+	static setCenterColor(centerColor: p5Types.Color) {
+		Particle.centerColor = centerColor;
+	}
+
 	position: p5Types.Vector;
 	velocity: p5Types.Vector;
 	color: p5Types.Color;
 
-	constructor(p5: p5Types, x: number, y: number) {
+	constructor(p5: p5Types, x: number, y: number, color: p5Types.Color) {
 		this.position = p5.createVector(x, y);
 		this.velocity = p5.createVector(0, 0);
-		this.color = p5.color(0, 255, 255, 255);
+		this.color = color;
 	}
 
 	update(p5: p5Types, target: Attractor, deltaTime: number, G: number, pixelPerMeter: number) {
@@ -48,7 +53,7 @@ class Particle {
 		this.velocity.mult(Particle.friction);
 
 		/* Convert position back to pixel units */
-		this.position = positionNormalized.mult(pixelPerMeter);
+		this.position = positionNormalized.copy().mult(pixelPerMeter);
 
 		/* Prevent particles from going out of the screen */
 		if (this.position.x < 0) {
@@ -67,10 +72,8 @@ class Particle {
 			this.position.y = 0;
 		}
 
-		/* Calculate new color according to velocity */
-		// const velocityMagnitudeNormalized = velocityMagnitude / colorNormalizer;
-		// const velocityMagnitude = this.velocity.mag();
-		// this.color = p5.color(velocityMagnitudeNormalized * 255, 255 - (velocityMagnitudeNormalized * 255), 255, 255);
+		// /* Calculate new color according to distance from attractor */
+		// this.color = p5.lerpColor(this.color, Particle.centerColor, distance / 1000);
 	}
 
 	show(p5: p5Types) {

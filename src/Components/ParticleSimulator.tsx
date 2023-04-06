@@ -58,6 +58,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		Particle.setMass(props.particlesMass);
 		Particle.setFriction(props.friction);
 		Particle.setDistanceCenterOffset(props.distanceOffset);
+		Particle.setCenterColor(p5.color(255, 0, 0, 200));
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
 			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
@@ -69,7 +70,8 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			// Create particle
 			particleArray.push(new Particle(p5,
 				posX,
-				posY),
+				posY,
+				p5.color(0, 255, 255, 200)),
 			);
 		}
 
