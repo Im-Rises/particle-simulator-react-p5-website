@@ -34,7 +34,7 @@ const App: React.FC = () => {
 					// gravitationalConstant={1}
 					particlesMass={50}
 					attractorMass={250}
-					// friction={0.99}
+					friction={0.99}
 					// distanceOffset={10}
 				/>
 			</div>

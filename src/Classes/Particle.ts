@@ -1,20 +1,22 @@
 import p5Types from 'p5';
 import type Attractor from './Attractor';
-
-// Can be member of Particle class
-let forceInversion = 1;
+import attractor from './Attractor';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const G = 1;
-const friction = 0.99;
 const pixelPerMeter = 100;
 const distanceCenterOffset = 10;
 
 class Particle {
 	static mass = 50;
+	static friction = 0.99;
 
 	static setMass(mass: number) {
 		Particle.mass = mass;
+	}
+
+	static setFriction(friction: number) {
+		Particle.friction = friction;
 	}
 
 	position: p5Types.Vector;
@@ -39,12 +41,12 @@ class Particle {
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
 		const force = toTarget.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquared);
 		// Acceleration = Force / mass
-		const acceleration = (force.copy().div(Particle.mass)).mult(forceInversion);
+		const acceleration = (force.copy().div(Particle.mass)).mult(target.forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
 		positionNormalized.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
 		this.velocity.add(acceleration.copy().mult(deltaTime));
-		this.velocity.mult(friction);
+		this.velocity.mult(Particle.friction);
 
 		/* Convert position back to pixel units */
 		this.position = positionNormalized.mult(pixelPerMeter);
@@ -78,11 +80,5 @@ class Particle {
 		p5.point(this.position.x, this.position.y);
 	}
 }
-
-const toggleAttractedRepulsed = () => {
-	forceInversion = -forceInversion;
-};
-
-export {toggleAttractedRepulsed};
 
 export default Particle;

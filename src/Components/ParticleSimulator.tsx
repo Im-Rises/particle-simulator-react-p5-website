@@ -3,7 +3,7 @@ import Sketch from 'react-p5';
 import type p5Types from 'p5';
 import {isMobile} from 'react-device-detect';
 import Attractor from '../Classes/Attractor';
-import Particle, {toggleAttractedRepulsed} from '../Classes/Particle';
+import Particle from '../Classes/Particle';
 
 type ComponentProps = {
 	parentRef: React.RefObject<HTMLElement>;
@@ -15,7 +15,7 @@ type ComponentProps = {
 	// gravitationalConstant: number;
 	particlesMass: number;
 	attractorMass: number;
-	// friction: number;
+	friction: number;
 	// distanceOffset: number;
 	// pixelsPerMeter: number;
 };
@@ -50,6 +50,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Create and set the particles around the center of the screen as a square
 		Particle.setMass(props.particlesMass);
+		Particle.setFriction(props.friction);
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
 			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
@@ -67,7 +68,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		// Callback mouse button
 		canvas.mousePressed((p5: p5Types) => {
-			toggleAttractedRepulsed();
+			attractor.toggleForceInversion();
 		});
 	};
 
