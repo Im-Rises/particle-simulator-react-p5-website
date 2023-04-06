@@ -5,7 +5,9 @@ class Particle {
 	static mass = 50;
 	static friction = 0.99;
 	static distanceCenterOffset = 10;
-	static centerColor: p5Types.Color;
+	static initialColor: p5Types.Color;
+	static finalColor: p5Types.Color;
+	static colorModifierMeters = 1;
 
 	static setMass(mass: number) {
 		Particle.mass = mass;
@@ -19,18 +21,26 @@ class Particle {
 		Particle.distanceCenterOffset = distanceCenterOffset;
 	}
 
-	static setCenterColor(centerColor: p5Types.Color) {
-		Particle.centerColor = centerColor;
+	static setInitialColor(initialColor: p5Types.Color) {
+		Particle.initialColor = initialColor;
+	}
+
+	static setFinalColor(centerColor: p5Types.Color) {
+		Particle.finalColor = centerColor;
+	}
+
+	static setColorModifierMeters(colorModifierMeters: number) {
+		Particle.colorModifierMeters = colorModifierMeters;
 	}
 
 	position: p5Types.Vector;
 	velocity: p5Types.Vector;
 	color: p5Types.Color;
 
-	constructor(p5: p5Types, x: number, y: number, color: p5Types.Color) {
+	constructor(p5: p5Types, x: number, y: number) {
 		this.position = p5.createVector(x, y);
 		this.velocity = p5.createVector(0, 0);
-		this.color = color;
+		this.color = Particle.initialColor;
 	}
 
 	update(p5: p5Types, target: Attractor, deltaTime: number, G: number, pixelPerMeter: number) {
@@ -38,12 +48,12 @@ class Particle {
 		const positionNormalized = this.position.copy().div(pixelPerMeter);
 
 		/* Calculate acceleration */
-		const toTarget = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
-		const distance = (toTarget.copy().mag() / pixelPerMeter);
-		const distanceSquared = (distance * distance) + Particle.distanceCenterOffset;
+		const toTargetNormalized = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
+		const distanceNormalized = (toTargetNormalized.copy().mag());
+		const distanceSquaredNormalized = (distanceNormalized * distanceNormalized) + Particle.distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
-		const force = toTarget.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquared);
+		const force = toTargetNormalized.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquaredNormalized);
 		// Acceleration = Force / mass
 		const acceleration = (force.copy().div(Particle.mass)).mult(target.forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
@@ -72,8 +82,8 @@ class Particle {
 			this.position.y = 0;
 		}
 
-		// /* Calculate new color according to distance from attractor */
-		// this.color = p5.lerpColor(this.color, Particle.centerColor, distance / 1000);
+		/* Calculate new color according to distance from attractor */
+		this.color = p5.lerpColor(Particle.initialColor, Particle.finalColor, Particle.colorModifierMeters / distanceNormalized);
 	}
 
 	show(p5: p5Types) {

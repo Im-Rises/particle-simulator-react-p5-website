@@ -5,6 +5,9 @@ import {isMobile} from 'react-device-detect';
 import Attractor from '../Classes/Attractor';
 import Particle from '../Classes/Particle';
 
+// type Triplet = [number, number, number];
+type Quadruplet = [number, number, number, number];
+
 type ComponentProps = {
 	parentRef: React.RefObject<HTMLElement>;
 	particleCountMobile: number;
@@ -18,6 +21,9 @@ type ComponentProps = {
 	friction: number;
 	distanceOffset: number;
 	pixelsPerMeter: number;
+	initColor: Quadruplet;
+	finalColor: Quadruplet;
+	colorModifierMeters: number;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
@@ -51,6 +57,10 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		// Set frame rate to 60
 		p5.frameRate(props.frameRate);
 
+		// Set up init mouse position
+		p5.mouseX = p5.width / 2;
+		p5.mouseY = p5.height / 2;
+
 		// Create attractor
 		attractor = new Attractor(p5, props.attractorMass);
 
@@ -58,7 +68,9 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		Particle.setMass(props.particlesMass);
 		Particle.setFriction(props.friction);
 		Particle.setDistanceCenterOffset(props.distanceOffset);
-		Particle.setCenterColor(p5.color(255, 0, 0, 200));
+		Particle.setInitialColor(p5.color(props.initColor[0], props.initColor[1], props.initColor[2], props.initColor[3]));
+		Particle.setFinalColor(p5.color(props.finalColor[0], props.finalColor[1], props.finalColor[2], props.finalColor[3]));
+		Particle.setColorModifierMeters(props.colorModifierMeters);
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
 			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
@@ -70,8 +82,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			// Create particle
 			particleArray.push(new Particle(p5,
 				posX,
-				posY,
-				p5.color(0, 255, 255, 200)),
+				posY),
 			);
 		}
 
