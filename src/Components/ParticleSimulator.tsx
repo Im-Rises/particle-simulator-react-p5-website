@@ -12,15 +12,21 @@ type ComponentProps = {
 	frameRate: number;
 	fixedUpdate: number;
 	spawnAreaRadius: number;
-	// gravitationalConstant: number;
+	gravitationalConstant: number;
 	particlesMass: number;
 	attractorMass: number;
 	friction: number;
-	// distanceOffset: number;
-	// pixelsPerMeter: number;
+	distanceOffset: number;
+	pixelsPerMeter: number;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
+	// Gravity constant
+	const G = props.gravitationalConstant;
+
+	// Pixels per meter (for the scale normalization)
+	const pixelPerMeter = props.pixelsPerMeter;
+
 	// Time variables
 	let previousTime = 0;
 	let fixedUpdateAccum = 0;
@@ -51,6 +57,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		// Create and set the particles around the center of the screen as a square
 		Particle.setMass(props.particlesMass);
 		Particle.setFriction(props.friction);
+		Particle.setDistanceCenterOffset(props.distanceOffset);
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
 			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
@@ -90,7 +97,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			attractor.update(p5);
 			// Update particles
 			particleArray.forEach(particle => {
-				particle.update(p5, attractor, fixedDeltaTime);
+				particle.update(p5, attractor, fixedDeltaTime, G, pixelPerMeter);
 			});
 			fixedUpdateAccum = 0;
 		}

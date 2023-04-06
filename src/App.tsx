@@ -31,12 +31,12 @@ const App: React.FC = () => {
 					fixedUpdate={60}
 					frameRate={60}
 					spawnAreaRadius={100}
-					// gravitationalConstant={1}
+					gravitationalConstant={1}
 					particlesMass={50}
 					attractorMass={250}
 					friction={0.99}
-					// distanceOffset={10}
-				/>
+					distanceOffset={10}
+					pixelsPerMeter={100}/>
 			</div>
 		</div>
 	);

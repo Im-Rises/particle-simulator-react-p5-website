@@ -1,15 +1,10 @@
 import p5Types from 'p5';
 import type Attractor from './Attractor';
-import attractor from './Attractor';
-
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const G = 1;
-const pixelPerMeter = 100;
-const distanceCenterOffset = 10;
 
 class Particle {
 	static mass = 50;
 	static friction = 0.99;
+	static distanceCenterOffset = 10;
 
 	static setMass(mass: number) {
 		Particle.mass = mass;
@@ -17,6 +12,10 @@ class Particle {
 
 	static setFriction(friction: number) {
 		Particle.friction = friction;
+	}
+
+	static setDistanceCenterOffset(distanceCenterOffset: number) {
+		Particle.distanceCenterOffset = distanceCenterOffset;
 	}
 
 	position: p5Types.Vector;
@@ -29,14 +28,14 @@ class Particle {
 		this.color = p5.color(0, 255, 255, 255);
 	}
 
-	update(p5: p5Types, target: Attractor, deltaTime: number) {
+	update(p5: p5Types, target: Attractor, deltaTime: number, G: number, pixelPerMeter: number) {
 		/* Convert position to normalized units */
 		const positionNormalized = this.position.copy().div(pixelPerMeter);
 
 		/* Calculate acceleration */
 		const toTarget = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
 		const distance = (toTarget.copy().mag() / pixelPerMeter);
-		const distanceSquared = (distance * distance) + distanceCenterOffset;
+		const distanceSquared = (distance * distance) + Particle.distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
 		const force = toTarget.copy().normalize().mult(G * target.mass * Particle.mass / distanceSquared);
