@@ -24,9 +24,8 @@ class Particle {
 	}
 
 	update(p5: p5Types, target: Attractor, deltaTime: number) {
-		// console.log('All variables : ', 'deltaTime', deltaTime, 'forceInversion', forceInversion, 'G', G, 'friction', friction, 'pixelPerMeter', pixelPerMeter, 'distanceCenterOffset', distanceCenterOffset);
-		// console.log('All variables : ', 'this.position', this.position, 'this.velocity', this.velocity, 'this.color', this.color, 'this.mass', this.mass);
-		// console.log('All variables : ', 'target.position', target.position, 'target.mass', target.mass);
+		/* Convert position to normalized units */
+		const positionNormalized = this.position.copy().div(pixelPerMeter);
 
 		/* Calculate acceleration */
 		const toTarget = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
@@ -38,14 +37,13 @@ class Particle {
 		// Acceleration = Force / mass
 		const acceleration = (force.copy().div(this.mass)).mult(forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
-		this.position.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
+		positionNormalized.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
 		this.velocity.add(acceleration.copy().mult(deltaTime));
 		this.velocity.mult(friction);
 
-		console.log('This.velocity', this.velocity);
-		console.log('This.position', this.position);
-		console.log('Acceleration', acceleration);
+		/* Convert position back to pixel units */
+		this.position = positionNormalized.mult(pixelPerMeter);
 
 		/* Prevent particles from going out of the screen */
 		if (this.position.x < 0) {
