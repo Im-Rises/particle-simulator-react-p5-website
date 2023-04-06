@@ -1,14 +1,14 @@
 import p5Types from 'p5';
 import type Attractor from './Attractor';
 
-// const G = 1000;
-// const friction = 0.99;
-// const drag = 0.5;
-// const distanceCenterOffset = 1000;
-// const colorNormalizer = 100;
-
 // Can be member of Particle class
 let forceInversion = 1;
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const G = 1;
+const friction = 0.99;
+const pixelPerMeter = 100;
+const distanceCenterOffset = 10;
 
 class Particle {
 	position: p5Types.Vector;
@@ -23,23 +23,29 @@ class Particle {
 		this.mass = mass;
 	}
 
-	update(p5: p5Types, target: Attractor, deltaTime: number, G: number, friction: number, distanceCenterOffset: number) {
+	update(p5: p5Types, target: Attractor, deltaTime: number) {
+		// console.log('All variables : ', 'deltaTime', deltaTime, 'forceInversion', forceInversion, 'G', G, 'friction', friction, 'pixelPerMeter', pixelPerMeter, 'distanceCenterOffset', distanceCenterOffset);
+		// console.log('All variables : ', 'this.position', this.position, 'this.velocity', this.velocity, 'this.color', this.color, 'this.mass', this.mass);
+		// console.log('All variables : ', 'target.position', target.position, 'target.mass', target.mass);
+
 		/* Calculate acceleration */
-		const toTarget = p5Types.Vector.sub(target.position, this.position);
-		// const distanceSquared = toTarget.magSq();
-		const distanceSquared = toTarget.magSq() + distanceCenterOffset;
+		const toTarget = p5Types.Vector.sub(target.position, this.position).div(pixelPerMeter);
+		const distance = (toTarget.copy().mag() / pixelPerMeter);
+		const distanceSquared = (distance * distance) + distanceCenterOffset;
 
 		// Sum of forces = (G * m1 * m2 / r^2 ) multiplied by the normalized vector toTarget to get the direction of the force
 		const force = toTarget.copy().normalize().mult(G * target.mass * this.mass / distanceSquared);
 		// Acceleration = Force / mass
-		const acceleration = force.copy().div(this.mass).mult(forceInversion);
-
-		/* Integration */
+		const acceleration = (force.copy().div(this.mass)).mult(forceInversion);
 		// p = p0 + v0 * t + 1/2 * a * t^2
 		this.position.add(this.velocity.copy().mult(deltaTime)).add(acceleration.copy().mult(deltaTime * deltaTime / 2));
 		// v = v0 + a * t
 		this.velocity.add(acceleration.copy().mult(deltaTime));
 		this.velocity.mult(friction);
+
+		console.log('This.velocity', this.velocity);
+		console.log('This.position', this.position);
+		console.log('Acceleration', acceleration);
 
 		/* Prevent particles from going out of the screen */
 		if (this.position.x < 0) {

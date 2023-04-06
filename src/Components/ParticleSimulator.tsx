@@ -12,11 +12,12 @@ type ComponentProps = {
 	frameRate: number;
 	fixedUpdate: number;
 	spawnAreaRadius: number;
-	gravitationalConstant: number;
+	// gravitationalConstant: number;
 	particlesMass: number;
 	attractorMass: number;
-	friction: number;
-	distanceOffset: number;
+	// friction: number;
+	// distanceOffset: number;
+	// pixelsPerMeter: number;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
@@ -45,7 +46,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		p5.frameRate(props.frameRate);
 
 		// Create attractor
-		attractor = new Attractor(p5);
+		attractor = new Attractor(p5, props.attractorMass);
 
 		// Create and set the particles around the center of the screen as a square
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
@@ -88,7 +89,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 			attractor.update(p5);
 			// Update particles
 			particleArray.forEach(particle => {
-				particle.update(p5, attractor, fixedDeltaTime, props.gravitationalConstant, props.friction, props.distanceOffset);
+				particle.update(p5, attractor, fixedDeltaTime);
 			});
 			fixedUpdateAccum = 0;
 		}
@@ -96,11 +97,13 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		/* Update canvas */
 		// Clear canvas
 		screenBuffer.background(0);
+
 		// Draw objects
 		attractor.show(screenBuffer);
 		particleArray.forEach(particle => {
 			particle.show(screenBuffer);
 		});
+
 		// Swap buffers
 		p5.image(screenBuffer, 0, 0);
 	};

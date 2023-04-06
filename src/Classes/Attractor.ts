@@ -2,10 +2,11 @@ import type p5Types from 'p5';
 
 class Attractor {
 	position: p5Types.Vector;
-	mass = 1000;
+	mass = 250;
 
-	constructor(p5: p5Types) {
+	constructor(p5: p5Types, mass: number) {
 		this.position = p5.createVector(p5.mouseX, p5.mouseY);
+		this.mass = mass;
 	}
 
 	update(p5: p5Types) {
