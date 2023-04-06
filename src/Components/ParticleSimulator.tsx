@@ -23,6 +23,7 @@ type ComponentProps = {
 	pixelsPerMeter: number;
 	initColor: Quadruplet;
 	finalColor: Quadruplet;
+	colorModifierMeters: number;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
@@ -69,7 +70,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 		Particle.setDistanceCenterOffset(props.distanceOffset);
 		Particle.setInitialColor(p5.color(props.initColor[0], props.initColor[1], props.initColor[2], props.initColor[3]));
 		Particle.setFinalColor(p5.color(props.finalColor[0], props.finalColor[1], props.finalColor[2], props.finalColor[3]));
-		Particle.setColorModifierMeters(1);
+		Particle.setColorModifierMeters(props.colorModifierMeters);
 		for (let i = 0; i < (isMobile ? props.particleCountMobile : props.particleCountComputer); i++) {
 			// Define particles spawn in a circle
 			const randomFloat = (min: number, max: number) => min + ((max - min) * Math.random());
