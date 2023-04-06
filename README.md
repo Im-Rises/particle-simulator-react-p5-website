@@ -35,6 +35,7 @@ https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-
 ## TODO
 
 - [ ] Add a way to change the color of the particles
+- [ ] Change color of particles according to distance from attractor with a sort of sun effect
 
 ## Package installation
 
