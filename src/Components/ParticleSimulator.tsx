@@ -5,7 +5,6 @@ import {isMobile} from 'react-device-detect';
 import Attractor from '../Classes/Attractor';
 import Particle from '../Classes/Particle';
 
-// type Triplet = [number, number, number];
 type Quadruplet = [number, number, number, number];
 
 type ComponentProps = {
@@ -24,6 +23,7 @@ type ComponentProps = {
 	initColor: Quadruplet;
 	finalColor: Quadruplet;
 	colorModifierMeters: number;
+	backColor: Quadruplet;
 };
 
 const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
@@ -117,7 +117,7 @@ const ParticleSimulator: React.FC<ComponentProps> = (props: ComponentProps) => {
 
 		/* Update canvas */
 		// Clear canvas
-		screenBuffer.background(0);
+		screenBuffer.background(props.backColor[0], props.backColor[1], props.backColor[2], props.backColor[3]);
 
 		// Draw objects
 		attractor.show(screenBuffer);

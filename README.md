@@ -47,29 +47,56 @@ Then you can import it in your project with `import ParticleSimulator from 'part
 
 To use it you can simply add the component in your project like this:
 
-```jsx
-            <div className={'particle-sim-canvas'} ref={divRef}>
-    {isLoaded ? (
-        <ParticleSimulator
-            parentRef={divRef}
-            particleCountMobile={PARTICLES_COUNT_MOBILE}
-            particleCountComputer={PARTICLES_COUNT_COMPUTER}
-            fixedUpdate={60}
-            frameRate={60}
-            spawnAreaRadius={100}
-            gravitationalConstant={1}
-            particlesMass={50}
-            attractorMass={250}
-            friction={0.99}
-            distanceOffset={10}
-            pixelsPerMeter={100}
-            initColor={[0, 255, 255, 200]}
-            finalColor={[255, 0, 255, 200]}
-            colorModifierMeters={0.3}/>
-    ) : (
-        <p className={'wait-sim-canvas'}>Loading...</p>
-    )}
-</div>
+```tsx
+import React, {useEffect, useState} from 'react';
+import ParticleSimulator from './Components/ParticleSimulator';
+import './App.css';
+
+const App: React.FC = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const divRef = React.useRef <HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (divRef.current) {
+            setIsLoaded(true);
+        }
+    }, [divRef]);
+
+    return (
+        <div className='App'>
+            <div ref={divRef}>
+                {isLoaded ? (
+                    <div className={'particle-sim-canvas'}>
+                        <ParticleSimulator
+                            parentRef={divRef}
+                            particleCountMobile={PARTICLES_COUNT_MOBILE}
+                            particleCountComputer={PARTICLES_COUNT_COMPUTER}
+                            fixedUpdate={60}
+                            frameRate={60}
+                            spawnAreaRadius={100}
+                            gravitationalConstant={1}
+                            particlesMass={50}
+                            attractorMass={250}
+                            friction={0.99}
+                            distanceOffset={10}
+                            pixelsPerMeter={100}
+                            initColor={[0, 255, 255, 200]}
+                            finalColor={[255, 0, 255, 200]}
+                            // initColor={[0xFF, 0x4C, 0x19, 0x80]}
+                            // finalColor={[0xFF, 0xFF, 0xFF, 0xFF]}
+                            colorModifierMeters={0.3}
+                            backColor={[0, 0, 0, 255]}
+                        />
+                    </div>
+                ) : (
+                    <p className={'wait-sim-canvas'}>Loading...</p>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default App;
 ```
 
 The component takes 6 props:
