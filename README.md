@@ -22,6 +22,10 @@ purple and then to pink.
 
 ## 🚀🚀 [The package is available on npm](https://www.npmjs.com/package/particle-simulator-react-p5) 🚀🚀
 
+> **Note**  
+> I also made a C++ version for WebGL2 using OpenGL ES 3.0. You can check it
+> out [here](https://github.com/Im-Rises/particle-simulator-webgl).
+
 ## Screenshots
 
 |                                                      Attraction                                                       |                                                         Drag                                                          |                                                       Repulsion                                                       |
@@ -32,7 +36,9 @@ purple and then to pink.
 
 [//]: # (https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4)
 
-https://user-images.githubusercontent.com/59691442/230523799-9afbf327-3cf4-4530-8127-594339d94334.mp4
+[//]: # (https://user-images.githubusercontent.com/59691442/230523799-9afbf327-3cf4-4530-8127-594339d94334.mp4)
+
+https://user-images.githubusercontent.com/59691442/230526870-cd104007-be41-4cdd-a10e-4672da650974.mp4
 
 ## Controls
 
