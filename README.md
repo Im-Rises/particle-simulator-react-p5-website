@@ -32,12 +32,16 @@ purple and then to pink.
 
 https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
 
+https://user-images.githubusercontent.com/59691442/230523799-9afbf327-3cf4-4530-8127-594339d94334.mp4
+
 ## Controls
 
 The particles are initially attracted to the mouse, but you can toggle attract/repel by clicking with the mouse
 button on a screen.  
 On tablet and mobile de the touch screen to move the particles by dragging your finger. To toggle
 attract/repel tap on the screen.
+
+You can also toggle fullscreen mode by pressing the `F11` key.
 
 ## Package installation
 
