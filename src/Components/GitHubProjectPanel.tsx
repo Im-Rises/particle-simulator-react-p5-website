@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import './GitHubProjectPanel.css';
+import './GitHubProjectPanel.scss';
 
 type Params = {
 	link: string;
@@ -10,7 +10,7 @@ const GitHubProjectPanel = (params: Params) => (
 	<div className='Project-Panel'>
 		<p className={'header'}>Github project link</p>
 		<a className={'project-link'} href={params.link} target={'_blank'} rel='noreferrer'>
-			<p>{params.linkText}</p></a>
+			<p>click here</p></a>
 	</div>
 );
 
