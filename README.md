@@ -32,10 +32,12 @@ purple and then to pink.
 
 https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
 
-## TODO
+## Controls
 
-- [ ] Add a way to change the color of the particles
-- [ ] Change color of particles according to distance from attractor with a sort of sun effect
+The particles are initially attracted to the mouse, but you can toggle attract/repel by clicking with the mouse
+button on a screen.  
+On tablet and mobile de the touch screen to move the particles by dragging your finger. To toggle
+attract/repel tap on the screen.
 
 ## Package installation
 
@@ -82,8 +84,6 @@ const App: React.FC = () => {
                             pixelsPerMeter={100}
                             initColor={[0, 255, 255, 200]}
                             finalColor={[255, 0, 255, 200]}
-                            // initColor={[0xFF, 0x4C, 0x19, 0x80]}
-                            // finalColor={[0xFF, 0xFF, 0xFF, 0xFF]}
                             colorModifierMeters={0.3}
                             backColor={[0, 0, 0, 255]}
                         />
@@ -126,7 +126,21 @@ repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
 > **Note**  
 > Be sure to do like in the example, the parent div of the canvas must be set before the p5 canvas is created.
 
----
+## Calculations
+
+The calculations are made with the [Newtonian mechanics](https://en.wikipedia.org/wiki/Newtonian_mechanics) equations.
+
+$$ F = G \frac{m_1 m_2}{r^2} $$
+
+There is a small offset between the particles to avoid the particles from having an infinite acceleration if they are
+too close from the attractor.
+
+$$ F = G \frac{m_1 m_2}{(r + d)^2} $$
+
+r is the distance between the particles and d is the offset (the offset parameter is the `distanceOffset` prop of the
+component).
+
+## Known issues
 
 > **Warning**  
 > The React-p5 dependency may have issues with the index.js file.
@@ -151,13 +165,6 @@ root.render(
     </>
 );
 ```
-
-## Controls
-
-The particles are initially attracted to the mouse, but you can toggle attract/repel by clicking with the mouse
-button on a screen.  
-On tablet and mobile de the touch screen to move the particles by dragging your finger. To toggle
-attract/repel tap on the screen.
 
 ## GitHub Actions
 
