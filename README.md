@@ -24,13 +24,13 @@ purple and then to pink.
 
 ## Screenshots
 
-![screenshot1](https://user-images.githubusercontent.com/59691442/223539432-98ed98bd-2aed-47f6-9463-740bf3a77640.png)
-![screenshot2](https://user-images.githubusercontent.com/59691442/223539428-e51d349e-aaee-4012-9d8b-7c21806af833.png)
-![screenshot3](https://user-images.githubusercontent.com/59691442/223539427-0c7616ed-8d45-4aa5-a060-f49c54c97885.png)
+|                                                      Attraction                                                       |                                                         Drag                                                          |                                                       Repulsion                                                       |
+|:---------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
+| ![screenshot1](https://user-images.githubusercontent.com/59691442/223539432-98ed98bd-2aed-47f6-9463-740bf3a77640.png) | ![screenshot2](https://user-images.githubusercontent.com/59691442/223539428-e51d349e-aaee-4012-9d8b-7c21806af833.png) | ![screenshot3](https://user-images.githubusercontent.com/59691442/223539427-0c7616ed-8d45-4aa5-a060-f49c54c97885.png) | ![screenshot4](https://user-images.githubusercontent.com/59691442/223539426-0c7616ed-8d45-4aa5-a060-f49c54c97885.png) |
 
 ## Demo video
 
-https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4
+[//]: # (https://user-images.githubusercontent.com/59691442/219550627-16660c09-dbea-41f3-ba15-3d7aaafca6d9.mp4)
 
 https://user-images.githubusercontent.com/59691442/230523799-9afbf327-3cf4-4530-8127-594339d94334.mp4
 
