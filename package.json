@@ -1,9 +1,9 @@
 {
   "name": "particle-simulator-react-p5",
   "description": "Particle simulator effect made with React and p5.js",
-  "homepage": "https://im-rises.github.io/particle-simulator-react-p5/",
+  "homepage": "https://im-rises.github.io/particle-simulator-react-p5-website",
   "repository": "https://github.com/Im-Rises/particle-simulator-react-p5",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": false,
   "license": "MIT",
   "publishConfig": {

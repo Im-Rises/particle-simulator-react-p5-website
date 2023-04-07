@@ -1,0 +1,35 @@
+.Project-Panel {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  border-radius: 0.4rem;
+  border-width: 0.2rem;
+  padding: 0.2rem;
+  text-align: center;
+  background: rgb(0, 255, 255);
+  background: linear-gradient(156deg, rgb(0, 255, 255) 0%, rgb(255, 0, 255) 100%);
+}
+.Project-Panel .header {
+  color: white;
+  font-size: 1.5em;
+}
+.Project-Panel .project-link {
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+}
+.Project-Panel .project-link p {
+  padding: 0.2rem;
+  border-radius: 0.4rem;
+  border: 1px solid white;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Project-Panel .project-link p:hover {
+  background: white;
+  color: black;
+  opacity: 0.6;
+}
+
+/*# sourceMappingURL=GitHubProjectPanel.css.map */

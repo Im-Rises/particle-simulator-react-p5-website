@@ -13,7 +13,7 @@
 
 This is a particle simulator package made with React Typescript and p5.js.
 
-## 🚀🚀[You can try it online from your browser](https://im-rises.github.io/particle-simulator-react-p5/) 🚀🚀
+## 🚀🚀[You can try it online from your browser](https://im-rises.github.io/particle-simulator-react-p5-website/) 🚀🚀
 
 It works on desktop and mobile as well with different controls (check the `controls` section).
 
@@ -131,7 +131,7 @@ This will create a canvas with 3000 particles on desktop and 1000 on mobile in f
 when the window is resized.
 
 You can find the complete example of the project in the GitHub
-repository [here](https://github.com/Im-Rises/particle-simulator-react-p5).
+repository [here](https://im-rises.github.io/particle-simulator-react-p5-website).
 
 > **Note**  
 > Be sure to do like in the example, the parent div of the canvas must be set before the p5 canvas is created.
@@ -178,7 +178,7 @@ root.render(
 
 ## GitHub Actions
 
-[![pages-build-deployment](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment)
+[//]: # ([![pages-build-deployment]&#40;https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment/badge.svg&#41;]&#40;https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment&#41;)
 [![Node.js CI](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml)
 [![ESLint](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml)
 [![CodeQL](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml)
@@ -186,7 +186,8 @@ root.render(
 
 The project is set up to run the following actions:
 
-- pages-build-deployment : Builds the website and deploys it to GitHub Pages.
+[//]: # (- pages-build-deployment : Builds the website and deploys it to GitHub Pages.)
+
 - node.js.yml : Runs the tests for the Node.js project.
 - eslint.yml : Runs the ESLint linter on the project.
 - codeql.yml : Runs the CodeQL linter on the project.
@@ -230,6 +231,9 @@ P5.js React:
 
 Check the source code
 on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://github.com/im-rises/particle-simulator-react-p5)
+
+Check the demo
+on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://im-rises.github.io/particle-simulator-react-p5-website)
 
 Check the package
 on [![npm](https://user-images.githubusercontent.com/59691442/223556055-4e9ef014-79d4-4136-ac07-b837b49066c8.svg)](https://www.npmjs.com/package/particle-simulator-react-p5)
