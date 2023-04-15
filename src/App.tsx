@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ParticleSimulator from './Components/ParticleSimulator';
+import ParticleSimulator from 'particle-simulator-react-p5';
 import GitHubProjectPanel from './Components/GitHubProjectPanel';
 import './App.scss';
 import {
