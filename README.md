@@ -11,14 +11,17 @@
 
 ## Description
 
-This is a particle simulator package made with React Typescript and p5.js.
+This is a simple demo of the `particle-simulator-react-p5` package. It is a particle simulator made with React and
+p5.js.
 
 ## 🚀🚀[You can try it online from your browser](https://im-rises.github.io/particle-simulator-react-p5-website/) 🚀🚀
 
 It works on desktop and mobile as well with different controls (check the `controls` section).
 
-The particles are set randomly on the screen in a square shape. Their color change according to their speed from blue to
-purple and then to pink.
+The particles are set randomly on the screen in a circle shape. Their color change according to the speed of the
+particle. The particles are attracted to the mouse and they are repelled from the edges of the screen. You can toggle
+attract/repel by clicking with the mouse button on a screen. On tablet and mobile de the touch screen to move the
+particles by dragging your finger. To toggle attract/repel tap on the screen.
 
 ## 🚀🚀 [The package is available on npm](https://www.npmjs.com/package/particle-simulator-react-p5) 🚀🚀
 
@@ -49,140 +52,12 @@ attract/repel tap on the screen.
 
 You can also toggle fullscreen mode by pressing the `F11` key.
 
-## Package installation
-
-To install it type `npm install particle-simulator-react-p5` in your terminal to install it.
-
-Then you can import it in your project with `import ParticleSimulator from 'particle-simulator-react-p5'`.
-
-## Usage
-
-To use it you can simply add the component in your project like this:
-
-```tsx
-import React, {useEffect, useState} from 'react';
-import ParticleSimulator from './Components/ParticleSimulator';
-import './App.css';
-
-const App: React.FC = () => {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const divRef = React.useRef <HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (divRef.current) {
-            setIsLoaded(true);
-        }
-    }, [divRef]);
-
-    return (
-        <div className='App'>
-            <div ref={divRef}>
-                {isLoaded ? (
-                    <div className={'particle-sim-canvas'}>
-                        <ParticleSimulator
-                            parentRef={divRef}
-                            particleCountMobile={PARTICLES_COUNT_MOBILE}
-                            particleCountComputer={PARTICLES_COUNT_COMPUTER}
-                            fixedUpdate={60}
-                            frameRate={60}
-                            spawnAreaRadius={100}
-                            gravitationalConstant={1}
-                            particlesMass={50}
-                            attractorMass={250}
-                            friction={0.99}
-                            distanceOffset={10}
-                            pixelsPerMeter={100}
-                            initColor={[0, 255, 255, 200]}
-                            finalColor={[255, 0, 255, 200]}
-                            colorModifierMeters={0.3}
-                            backColor={[0, 0, 0, 255]}
-                        />
-                    </div>
-                ) : (
-                    <p className={'wait-sim-canvas'}>Loading...</p>
-                )}
-            </div>
-        </div>
-    );
-};
-
-export default App;
-```
-
-The component takes 6 props:
-
-- `parentRef` - a reference to the parent div of the canvas. It is used to get the size of the canvas.
-- `particleCountMobile` - the number of particles on mobile devices.
-- `particleCountComputer` - the number of particles on desktop devices.
-- `fixedUpdate` - the number of fixed updates per second.
-- `frameRate` - the number of frames per second.
-- `spawnAreaRadius` - the radius of the spawn area of the particles (in pixels).
-- `gravitationalConstant` - the gravitational constant of the simulation.
-- `particlesMass` - the mass of the particles.
-- `attractorMass` - the mass of the attractor.
-- `friction` - the friction of the particles.
-- `distanceOffset` - the distance offset of the particles.
-- `pixelsPerMeter` - the number of pixels per meter (in meters).
-- `initColor` - the initial color of the particles (in RGB).
-- `finalColor` - the final color of the particles (in RGB).
-- `colorModifierMeters` - the number of meters after which the color of the particles changes.
-
-This will create a canvas with 3000 particles on desktop and 1000 on mobile in fullscreen which will be resized
-when the window is resized.
-
-You can find the complete example of the project in the GitHub
-repository [here](https://im-rises.github.io/particle-simulator-react-p5-website).
-
-> **Note**  
-> Be sure to do like in the example, the parent div of the canvas must be set before the p5 canvas is created.
-
-## Calculations
-
-The calculations are made with the [Newtonian mechanics](https://en.wikipedia.org/wiki/Newtonian_mechanics) equations.
-
-$$ F = G \frac{m_1 m_2}{r^2} $$
-
-There is a small offset between the particles to avoid the particles from having an infinite acceleration if they are
-too close from the attractor.
-
-$$ F = G \frac{m_1 m_2}{(r + d)^2} $$
-
-r is the distance between the particles and d is the offset (the offset parameter is the `distanceOffset` prop of the
-component).
-
-## Known issues
-
-> **Warning**  
-> The React-p5 dependency may have issues with the index.js file.
-
-```js
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-        <App/>
-    </React.StrictMode>
-);
-
-```
-
-Please delete the React.StrictMode tag in the index.js file and replace it with the code below.
-
-```js
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <>
-        <App/>
-    </>
-);
-```
-
 ## GitHub Actions
 
-[//]: # ([![pages-build-deployment]&#40;https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment/badge.svg&#41;]&#40;https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/pages/pages-build-deployment&#41;)
-[![Node.js CI](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/node.js.yml)
-[![ESLint](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/eslint.yml)
-[![CodeQL](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/codeql.yml)
-[![Node.js Package](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/Im-Rises/particle-simulator-react-p5/actions/workflows/npm-publish.yml)
+[![Node.js CI](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/node.js.yml)
+[![ESLint](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/eslint.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/eslint.yml)
+[![CodeQL](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/codeql.yml)
+[![Node.js Package](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/Im-Rises/particle-simulator-react-p5-website/actions/workflows/npm-publish.yml)
 
 The project is set up to run the following actions:
 
@@ -230,13 +105,13 @@ P5.js React:
 ## Links
 
 Check the source code
-on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://github.com/im-rises/particle-simulator-react-p5)
+on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://github.com/im-rises/particle-simulator-react-p5-website)
 
 Check the demo
 on [![github](https://user-images.githubusercontent.com/59691442/223556058-6244e346-8117-43cd-97c6-bf68611bf286.svg)](https://im-rises.github.io/particle-simulator-react-p5-website)
 
 Check the package
-on [![npm](https://user-images.githubusercontent.com/59691442/223556055-4e9ef014-79d4-4136-ac07-b837b49066c8.svg)](https://www.npmjs.com/package/particle-simulator-react-p5)
+on [![npm](https://user-images.githubusercontent.com/59691442/223556055-4e9ef014-79d4-4136-ac07-b837b49066c8.svg)](https://www.npmjs.com/package/particle-simulator-react-p5-website)
 
 ## Contributors
 
@@ -245,4 +120,4 @@ Quentin MOREL :
 - @Im-Rises
 - <https://github.com/Im-Rises>
 
-[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/particle-simulator-react-p5)](https://github.com/Im-Rises/particle-simulator-react-p5/graphs/contributors)
+[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/particle-simulator-react-p5-website)](https://github.com/Im-Rises/particle-simulator-react-p5-website/graphs/contributors)
