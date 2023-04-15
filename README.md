@@ -120,9 +120,9 @@ Quentin MOREL :
 - @Im-Rises
 - <https://github.com/Im-Rises>
 
-[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/particle-simulator-react-p5-website)](https://github.com/Im-Rises/particle-simulator-react-p5-website/graphs/contributors)
-
 Clément Reiffers :
 
 @clementreiffers
 https://github.com/clementreiffers
+
+[![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/particle-simulator-react-p5-website)](https://github.com/Im-Rises/particle-simulator-react-p5-website/graphs/contributors)
