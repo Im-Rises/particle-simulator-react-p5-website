@@ -122,7 +122,7 @@ Quentin MOREL :
 
 Clément Reiffers :
 
-@clementreiffers
-https://github.com/clementreiffers
+- @clementreiffers
+- <https://github.com/clementreiffers>
 
 [![GitHub contributors](https://contrib.rocks/image?repo=Im-Rises/particle-simulator-react-p5-website)](https://github.com/Im-Rises/particle-simulator-react-p5-website/graphs/contributors)
