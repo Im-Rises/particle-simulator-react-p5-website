@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import ParticleSimulator from './Components/ParticleSimulator';
 import GitHubProjectPanel from './Components/GitHubProjectPanel';
-import './App.css';
+import './App.scss';
 import {
 	GITHUB_LINK_TEXT,
 	GITHUB_URL,
