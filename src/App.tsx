@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import ParticleSimulator from './Components/ParticleSimulator';
+import ParticleSimulator from 'particle-simulator-react-p5';
 import GitHubProjectPanel from './Components/GitHubProjectPanel';
-import './App.css';
+import './App.scss';
 import {
 	GITHUB_LINK_TEXT,
 	GITHUB_URL,
@@ -25,26 +25,30 @@ const App: React.FC = () => {
 				<GitHubProjectPanel link={GITHUB_URL}
 					linkText={GITHUB_LINK_TEXT}/>
 			</header>
-			<div className={'particle-sim-canvas'} ref={divRef}>
+			<div ref={divRef}>
 				{isLoaded ? (
-					<ParticleSimulator
-						parentRef={divRef}
-						particleCountMobile={PARTICLES_COUNT_MOBILE}
-						particleCountComputer={PARTICLES_COUNT_COMPUTER}
-						fixedUpdate={60}
-						frameRate={60}
-						spawnAreaRadius={100}
-						gravitationalConstant={1}
-						particlesMass={50}
-						attractorMass={250}
-						friction={0.99}
-						distanceOffset={10}
-						pixelsPerMeter={100}
-						initColor={[0, 255, 255, 200]}
-						finalColor={[255, 0, 255, 200]}
-						// initColor={[0xFF, 0x4C, 0x19, 0x80]}
-						// finalColor={[0xFF, 0xFF, 0xFF, 0xFF]}
-						colorModifierMeters={0.3}/>
+					<div className={'particle-sim-canvas'}>
+						<ParticleSimulator
+							parentRef={divRef}
+							particleCountMobile={PARTICLES_COUNT_MOBILE}
+							particleCountComputer={PARTICLES_COUNT_COMPUTER}
+							fixedUpdate={60}
+							frameRate={60}
+							spawnAreaRadius={100}
+							gravitationalConstant={1}
+							particlesMass={50}
+							attractorMass={250}
+							friction={0.99}
+							distanceOffset={10}
+							pixelsPerMeter={100}
+							initColor={[0, 255, 255, 200]}
+							finalColor={[255, 0, 255, 200]}
+							// initColor={[0xFF, 0x4C, 0x19, 0x80]}
+							// finalColor={[0xFF, 0xFF, 0xFF, 0xFF]}
+							colorModifierMeters={0.3}
+							backColor={[0, 0, 0, 255]}
+						/>
+					</div>
 				) : (
 					<p className={'wait-sim-canvas'}>Loading...</p>
 				)}
