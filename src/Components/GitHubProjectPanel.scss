@@ -3,20 +3,37 @@
   top: 0.5rem;
   left: 0.5rem;
 
-  border-style: solid;
   border-radius: 0.4rem;
   border-width: 0.2rem;
   padding: 0.2rem;
   text-align: center;
-  color: #A9A9A9;
+
+  background: rgb(0, 255, 255);
+  background: linear-gradient(156deg, rgba(0, 255, 255, 1) 0%, rgba(255, 0, 255, 1) 100%);
 
   .header {
-    color: #A9A9A9;
-    font-size: 0.8em;
+    color: white;
+    font-size: 1.0rem;
   }
 
   .project-link {
-    color: #49a8dd;
-    font-size: 0.5em;
+    color: white;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+
+  .project-link p {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+    border: 1px solid white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .project-link p:hover {
+    background: white;
+    color: black;
+    opacity: 0.6;
   }
 }
