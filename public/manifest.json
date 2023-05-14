@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "particle-simulator-react-p5",
+  "name": "Particle Simulator React P5",
   "icons": [
     {
       "src": "favicon.ico",
