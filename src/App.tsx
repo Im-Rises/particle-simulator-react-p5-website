@@ -5,8 +5,6 @@ import './App.scss';
 import {
 	GITHUB_LINK_TEXT,
 	GITHUB_URL,
-	PARTICLES_COUNT_COMPUTER,
-	PARTICLES_COUNT_MOBILE,
 } from './Constants/constant-particle-simulator';
 
 const App: React.FC = () => {
@@ -30,7 +28,6 @@ const App: React.FC = () => {
 					<div className={'particle-sim-canvas'}>
 						<ParticleSimulator
 							parentRef={divRef}
-							maxColorVelocity={7}
 						/>
 					</div>
 				) : (
