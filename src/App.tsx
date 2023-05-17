@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import ParticleSimulator from 'particle-simulator-react-p5';
-import GitHubProjectPanel from './Components/GitHubProjectPanel';
+import GitHubProjectPanel from './components/GitHubProjectPanel';
 import './App.scss';
 import {
 	GITHUB_LINK_TEXT,
 	GITHUB_URL,
-} from './Constants/constant-particle-simulator';
+} from './constants/constant-particle-simulator';
 
 const App: React.FC = () => {
 	const [isLoaded, setIsLoaded] = useState(false);
