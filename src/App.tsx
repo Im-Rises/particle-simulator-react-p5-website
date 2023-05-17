@@ -28,6 +28,7 @@ const App: React.FC = () => {
 					<div className={'particle-sim-canvas'}>
 						<ParticleSimulator
 							parentRef={divRef}
+							particleCountMobile={1000}
 						/>
 					</div>
 				) : (
