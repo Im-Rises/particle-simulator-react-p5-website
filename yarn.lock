@@ -6920,10 +6920,10 @@ parseurl@~1.3.2, parseurl@~1.3.3:
   resolved "https://registry.npmjs.org/parseurl/-/parseurl-1.3.3.tgz"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
-particle-simulator-react-p5@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/particle-simulator-react-p5/-/particle-simulator-react-p5-1.0.0.tgz"
-  integrity sha512-OkibCBM70Vw1pPHg8qAZ0qDA4fgCrgDXpfJ5oMAFOETnmE4A8yvu47gvTW+dwhedeflb9FmtXfakuM0b8mu1Tw==
+particle-simulator-react-p5@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/particle-simulator-react-p5/-/particle-simulator-react-p5-1.2.1.tgz"
+  integrity sha512-L+NMpjcI/Qyh4OQ76SK2uc/o1bDHb+bOrV+h6yNOsHqg42jjofznsxXlAIM65ADt+6hkXiZlfOLl2b8k0ttNaQ==
   dependencies:
     canvas "^2.11.0"
     react "^18.2.0"
