@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/particle-simulator-react-p5-website/static/css/main.14a96051.css",
+    "main.js": "/particle-simulator-react-p5-website/static/js/main.e6a384d4.js",
+    "static/js/787.53a075ed.chunk.js": "/particle-simulator-react-p5-website/static/js/787.53a075ed.chunk.js",
+    "index.html": "/particle-simulator-react-p5-website/index.html",
+    "main.14a96051.css.map": "/particle-simulator-react-p5-website/static/css/main.14a96051.css.map",
+    "main.e6a384d4.js.map": "/particle-simulator-react-p5-website/static/js/main.e6a384d4.js.map",
+    "787.53a075ed.chunk.js.map": "/particle-simulator-react-p5-website/static/js/787.53a075ed.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.14a96051.css",
+    "static/js/main.e6a384d4.js"
+  ]
+}
